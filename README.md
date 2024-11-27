@@ -74,11 +74,110 @@ You can see both [SceneGraph.js](https://github.com/lukehollis/sphr/blob/main/sr
 
 ### Spacefile / Building tours
 
+To build your spaces and tours, reference the [example_space.json](https://github.com/lukehollis/sphr/blob/main/data/example_space.json) and [example_tour.json] in the `data` directory. 
+
+These use the Nefertari dataset to demonstrate the expected format of the data required by the frontend. 
+
+
+### Space JSON Format
+
+#### Nodes Array
+Each node in the `nodes` array represents a viewpoint in the 3D space and contains:
+- `uuid`: Unique identifier for the node
+- `image`: Path to the 360° image for this viewpoint
+- `index`: Numeric index of the node
+- `position`: 3D coordinates (x,y,z) for camera position
+- `rotation`: Rotation angles (x,y,z) in radians
+- `resolution`: Image resolution (e.g. "4096")
+- `floorPosition`: 3D coordinates (x,y,z) for position on floor
+
+#### Scene Settings
+The `sceneSettings` object contains configuration for:
+
+##### Nodes Settings
+- `scale`: Scale factor for node group
+- `offsetPosition`: Position offset (x,y,z)
+- `offsetRotation`: Rotation offset (x,y,z)
+
+##### Dollhouse Settings
+- `scale`: Scale factor for dollhouse model
+- `offsetPosition`: Position offset (x,y,z)
+- `offsetRotation`: Rotation offset (x,y,z)
+
+##### Global Offsets
+- `offsetPosition`: Global position offset
+- `offsetRotation`: Global rotation offset
+
+#### Initial Settings
+- `initialNode`: UUID of starting node
+- `initialRotation`: Starting camera rotation
+  - `polar`: Polar angle in degrees
+  - `azimuth`: Azimuth angle in degrees
+
+This format allows defining a complete 3D space with multiple viewpoints, their positions, rotations, and global scene settings. The data is used by the application to render the 3D environment and handle navigation between viewpoints.
+
+
+### Tour JSON Format
+
+#### Audio Configuration
+The `audio` object defines different audio tracks and their settings:
+- `start`: Audio played at tour start
+- `default`: Background music/audio
+- `navigate`: Sound effect for navigation
+Each audio entry contains:
+- `url`: Path to audio file
+- `options`: 
+  - `loop`: Boolean for looping
+  - `volume`: Value between 0-1
+  - `autoplay`: Boolean to autoplay
+
+#### Spaces Array
+Each space in the `spaces` array contains:
+- `id`: Unique identifier for the space
+- `url`: URL to the space (optional)
+- `type`: Type of space (e.g. "spaces")
+- `title`: Display title for the space
+- `tourpoints`: Array of navigation points
+
+#### Tourpoints
+Each tourpoint defines a stop in the tour:
+- `pan`: Direction of camera movement ("left", "right")
+- `text`: Main descriptive text
+- `zoom`: Camera zoom level (0-100)
+- `files`: Array of associated files
+- `models`: Array of 3D model IDs to display
+- `sounds`: Array of audio IDs to play
+- `nodeUUID`: ID of the node to move to
+- `rotation`: Camera rotation
+  - `polar`: Vertical angle in degrees
+  - `azimuth`: Horizontal angle in degrees
+- `viewMode`: View mode ("FPV" or "ORBIT")
+- `targetType`: Type of target ("NODE" or "MODEL")
+- `annotations`: Array of annotations
+- `textPosition`: Position of text overlay
+- `secondaryText`: Additional text (optional)
+
+#### Scene Graph
+Array of 3D models that can be shown during the tour. Each model has:
+- `id`: Unique identifier
+- `file`: URL to model file
+- `type`: Type of asset ("model")
+- `scale`: Array of [x,y,z] scale factors
+- `fileType`: Format of model file
+- `isSketch`: Boolean for sketch rendering
+- `position`: Array of [x,y,z] coordinates
+- `rotation`: Array of [x,y,z] rotation angles
+
+#### Global Settings
+- `autoplay`: Boolean to auto-advance tour
+- `nextTour`: ID of next tour or "random"
+- `defaultShowText`: Boolean to show text by default
+
 
 
 ### 3d Gaussian Splatting Support
 
-
+This supports out of the box FPV exploration of 3d Gaussian Splats using [@mkkellogg](https://github.com/mkkellogg)'s excellent [Three.js splat implementation](https://github.com/mkkellogg/GaussianSplats3D) and adding the custom cursor and tour support. 
 
 
 
