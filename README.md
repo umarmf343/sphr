@@ -7,6 +7,10 @@ Built with Three.js, it allows you to build interactive virtual experiences with
 
 
 
+https://github.com/user-attachments/assets/cf189d3d-13ee-44d9-9cd5-b51df0e24d29
+
+
+
 ## In the wild
 
 * [Tomb of Nefetari](https://mused.com/guided/923/the-tomb-of-nefertari-valley-of-the-queens/) - Basic
