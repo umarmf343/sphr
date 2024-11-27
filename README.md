@@ -1,14 +1,18 @@
-# SPHR - SPatial Human Reality [in a web browser]
+# SPHR - SPatial Human Reality 
 
 
-SPHR is an open-source virtual tour builder that enables the creation of hackable and customizable 3D spaces in web browsers. Built with Three.js, it allows developers and creators to craft interactive virtual experiences with full control over the environment, transitions, and user interactions.
+SPHR is an open-source virtual tour builder that enables the creation of hackable and customizable 3D spaces shared in web browsers. 
+
+Built with Three.js, it allows you to build interactive virtual experiences with full control over the environment, transitions, and user interactions.
+
+
 
 ## In the wild
 
-[Tomb of Nefetari](https://mused.com/guided/923/the-tomb-of-nefertari-valley-of-the-queens/) - Basic
-[Garden dataset](https://spaces.mused.org/splattour0.3-en/index.html) - 3d Gaussian Splatting using [mkkellogg/GaussianSplats3D](https://github.com/mkkellogg/GaussianSplats3D)
-[Great Sphinx of Giza](https://mused.com/guided/438/great-sphinx/) - Matterport Integration
-[Tomb of Ramesses I](https://mused.com/tours/730/tomb-of-ramesses-i/) - More custom vfx
+* [Tomb of Nefetari](https://mused.com/guided/923/the-tomb-of-nefertari-valley-of-the-queens/) - Basic
+* [Garden dataset](https://spaces.mused.org/splattour0.3-en/index.html) - 3d Gaussian Splatting using [mkkellogg/GaussianSplats3D](https://github.com/mkkellogg/GaussianSplats3D)
+* [Great Sphinx of Giza](https://mused.com/guided/438/great-sphinx/) - Matterport Integration
+* [Tomb of Ramesses I](https://mused.com/tours/730/tomb-of-ramesses-i/) - More custom vfx
 
 ## Developer Note
 
@@ -49,4 +53,15 @@ The project is designed to be highly customizable. You can:
 - Add new language support
 
 ## License
-MIT
+MIT, but if this is useful to you, I request that you cite this repo because it helps the work continue.
+
+```
+@misc{hollis2024sphr,
+  author = {Luke Hollis},
+  title = {SPHR - Spatial Human Reality in a web browser},
+  year = {2024},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/lukehollis/sphr}}
+}
+```
