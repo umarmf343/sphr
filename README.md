@@ -33,6 +33,13 @@ I'm just extracting the frontend from my current implmentation and making some f
 - Multi-language support
 
 
+
+
+https://github.com/user-attachments/assets/ba4ec12f-0a6a-486d-92dc-bb2c9a0a89e2
+
+
+
+
 ### 360 imagery 
 
 Any sort of equirectangular 360 image can be used and displayed in the EnvCube component, but greater than 8k resolution is recommended. [EnvCube.js](https://github.com/lukehollis/sphr/blob/main/src/components/EnvCube.js)
@@ -42,11 +49,28 @@ There are two envCubes to support transition between the visible 360 image and t
 In this implementation, to progressively load low-to-high resolution textures on the faces of the cube, I've used a IIIF image server for interoperability between projects. I'll remove this in future versions. 
 
 
+
+
+
+https://github.com/user-attachments/assets/b85c5ed8-6d98-4e6a-afd8-fc470b5acba1
+
+
+
+
 ### Cursor
 
 One of the most essential pieces of this implementation is the cursor that renders on the 3d mesh of the space but appears on the top of the 360 images. This is where your users get the photorealistic 3d experience, interacting with the 3d mesh but viewing the 360 images.
 
 You can see the current implementation here: [Cursor.js](https://github.com/lukehollis/sphr/blob/main/src/components/Cursor.js). There are many optimization to be made with the cursor, but it is currently functional as seen in the demos, and can be used as a starting point for your own custom cursor.
+
+
+
+
+https://github.com/user-attachments/assets/585c69a3-bbdd-42b6-a999-014c14ba42cc
+
+
+
+
 
 
 ### Dollhouse 
@@ -56,6 +80,14 @@ The dollhouse is the low resolution version of a 3d capture of your space [Dollh
 It's used for cursor interactions and the Orbit view mode. I generally aim for less than 50k verts in my dollhouse and less than 2MB in texture size, but you can use much larger if it's important for you.
 
 
+
+
+https://github.com/user-attachments/assets/eae0d963-c7c9-4110-b8fd-39cd6500b86c
+
+
+
+
+
 ### Transition between 360 images w/CubeRenderTarget
 
 This is a complex interaction that has little documentation in other place online--and one of the main reasons why I thought it would be useful to release this code. 
@@ -63,6 +95,15 @@ This is a complex interaction that has little documentation in other place onlin
 When navigating between two 360 images, the main camera lerps between the position of your first 360 image and second 360 image, and uses a [WebGLCubeRenderTarget](https://threejs.org/docs/#api/en/renderers/WebGLCubeRenderTarget) to render the transition onto the Environment Map of the Dollhouse to simulate movement between two points. 
 
 This is an atypical custom use of the envMap, more here at (MeshBasicMaterial](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial). The current implementation is memory inefficient and requires further work in custom shader development. 
+
+
+
+
+
+
+https://github.com/user-attachments/assets/cf0eca5c-b6a6-452d-ba7e-56cbf6025d8c
+
+
 
 
 ### Models 
@@ -172,6 +213,13 @@ Array of 3D models that can be shown during the tour. Each model has:
 - `autoplay`: Boolean to auto-advance tour
 - `nextTour`: ID of next tour or "random"
 - `defaultShowText`: Boolean to show text by default
+
+
+
+
+
+https://github.com/user-attachments/assets/1fb89081-50bf-459d-b1cf-75f672ebc3e7
+
 
 
 
