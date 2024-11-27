@@ -330,46 +330,9 @@ export default class EnvCubeManager {
 
     // set the cube render order based on app state
     this.setCubeRenderOrder();
-
-    // this.demoMoveIntensity();
-  }
-
-  demoMoveIntensity() {
-    // Set up the movementIntensity animation loop
-    this.movementIntensityMin = 0.0;
-    this.movementIntensityMax = 1.0; // Adjust this value as needed
-    this.movementIntensityStep = 0.02; // Increased step size for smoother animation
-    this.movementIntensityDirection = 1;
-
-    this.movementIntensityInterval = setInterval(() => {
-      const currentIntensity = this.envCube.materials[0].uniforms.movementIntensity.value;
-
-      // Update the movementIntensity value
-      let newIntensity = currentIntensity + this.movementIntensityStep * this.movementIntensityDirection;
-
-      // Check if the intensity has reached the minimum or maximum value
-      if (newIntensity <= this.movementIntensityMin || newIntensity >= this.movementIntensityMax) {
-        // Reverse the direction
-        this.movementIntensityDirection *= -1;
-        
-        // Clamp the intensity to the min/max values to avoid overshooting
-        newIntensity = Math.max(this.movementIntensityMin, Math.min(newIntensity, this.movementIntensityMax));
-      }
-
-      // Update the movementIntensity uniform in all materials of both envCube and envCubeOutgoing
-      this.envCube.materials.forEach(material => {
-        material.uniforms.movementIntensity.value = newIntensity;
-      });
-      this.envCubeOutgoing.materials.forEach(material => {
-        material.uniforms.movementIntensity.value = newIntensity;
-      });
-    }, 16);
   }
 
   setMoveIntensity(newIntensity) {    
-    // this.envCube.materials.forEach(material => {
-    //   material.uniforms.movementIntensity.value = newIntensity;
-    // });
     this.envCubeOutgoing.materials.forEach(material => {
       material.uniforms.movementIntensity.value = newIntensity;
     });
@@ -382,7 +345,6 @@ export default class EnvCubeManager {
     const movementDirectionWorld = cameraLerpTarget.clone().sub(cameraPosition).normalize();
 
     this.envCubeOutgoing.materials.forEach(material => {
-      // const faceI = material.uniforms.faceI.value;
 
       // Get the face normal direction in world space
       const faceNormal = new THREE.Vector3();
@@ -425,8 +387,6 @@ export default class EnvCubeManager {
         stretchDirection.set(0, Math.sign(projectedMovement.y), 0);
       }
 
-      // Update the movementDirection uniform for the current material
-      // material.uniforms.movementDirection.value = stretchDirection;
     });
   }
 
@@ -451,7 +411,6 @@ export default class EnvCubeManager {
     this.envCubeOutgoing.materials.forEach((material) => (material.opacity = 1));
     if (!isMobile) {
       this.envCubeOutgoing.cubeClone.children.forEach((child) => (child.material.opacity = 1));
-      // this.envCube.cubeClone.children.forEach((child) => (child.material.opacity = 1));
     }
 
     // update faces on main cube
@@ -477,11 +436,9 @@ export default class EnvCubeManager {
 
 
       this.envCubeOutgoing.materials.forEach((material) => (material.opacity = 1 - factor));
-      // this.envCube.materials.forEach((material) => (material.opacity = 1 - factor));
 
       if (!isMobile) {
         this.envCubeOutgoing.cubeClone.children.forEach((child) => (child.material.opacity = 1 - factor));
-        // this.envCube.cubeClone.children.forEach((child) => (child.material.opacity = 1 - factor));
       }
 
       if (progress >= duration) {
