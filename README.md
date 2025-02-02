@@ -1,9 +1,13 @@
+
+![sphr_logo](https://github.com/user-attachments/assets/bcc6126e-4c6d-48ec-ac76-7018d6149043)
+
+
 # SPHR - SPatial Hackable Reality 
 
 
-SPHR is an open-source virtual tour builder that enables the creation of hackable and customizable 3D spaces shared in web browsers. 
+SPHR is an open-source virtual tour and digital twin builder that enables the creation of customizable 3D spaces shared in web browsers. 
 
-Built with Three.js, it allows you to build interactive virtual experiences with full control over the environment, transitions, and user interactions.
+Built with Three.js, it allows you to build interactive virtual experiences with full control over the environment, transitions, vfx, and other user interactions.
 
 
 
