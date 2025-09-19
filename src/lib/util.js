@@ -23,17 +23,23 @@ export const areVector3Equal = (vector1, vector2) => {
 export const makeImageSrc = ({ image, files }) => {
   let img_src = null;
 
-  if (typeof image !== "undefined" && image.length) {
-    if (image.indexOf(".gif") >= 0) {
+  const isGifReference = (value) => typeof value === 'string' && value.toLowerCase().includes('.gif');
+  const isGifMimeType = (value) => typeof value === 'string' && value.toLowerCase().includes('gif');
+
+  if (typeof image === "string" && image.length) {
+    if (isGifReference(image)) {
       img_src = `https://static.mused.org/${image}`;
     } else {
       img_src = `https://iiif.mused.org/${image}/square/600,/0/default.jpg`;
     }
-  } else if (files && files.length) {
-    if (files[0].mime_type.indexOf(".gif") >= 0) {
-      img_src = `https://static.mused.org/${files[0].filename}`;
-    } else {
-      img_src = `https://iiif.mused.org/${files[0].filename}/square/600,/0/default.jpg`;
+  } else if (Array.isArray(files) && files.length) {
+    const { filename, mime_type } = files[0] || {};
+    const fileIsGif = isGifReference(filename) || isGifMimeType(mime_type);
+
+    if (fileIsGif && filename) {
+      img_src = `https://static.mused.org/${filename}`;
+    } else if (filename) {
+      img_src = `https://iiif.mused.org/${filename}/square/600,/0/default.jpg`;
     }
   }
 
