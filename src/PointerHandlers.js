@@ -1,8 +1,6 @@
 import * as THREE from 'three';
 
-
 import Store from './Store';
-import { areVector3Equal } from './lib/util';
 
 
 const calculatePinchDistance = (touch1, touch2) => {
