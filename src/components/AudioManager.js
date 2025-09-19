@@ -96,7 +96,7 @@ export default class AudioManager {
   playNarration(name) {
     // If there's a current narration, fade it out
     if (this.currentNarration) {
-      this.fadeOut(this.currentNarration, 50, 0.2, this.playSound(name)); // 50ms interval, 0.01 volume decrement
+      this.fadeOut(this.currentNarration, 50, 0.2, () => this.playSound(name)); // 50ms interval, 0.01 volume decrement
     } else {
       this.playSound(name);
     }
@@ -184,7 +184,7 @@ export default class AudioManager {
       if (elapsed < duration) {
         const ratio = elapsed / duration;
         fromSound.setVolume(fromSoundOptions.volume - (ratio * fromSoundOptions.volume));
-        toSound.setVolume(ratio * fromSoundOptions.volume);
+        toSound.setVolume(ratio * toSoundOptions.volume);
 
         requestAnimationFrame(step);
       } else {

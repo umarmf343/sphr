@@ -170,7 +170,7 @@ const initialStore = {
     textures: {},
     materialCache: {},
     tour,
-    tourGuidedMode: tour && 'spaces' in tour && tour.spaces.length > 0,
+    tourGuidedMode: Array.isArray(tour?.tour_data?.spaces) && tour.tour_data.spaces.length > 0,
     tourGuidedAutoplay,
     tourSpaceActiveIdx: 0,
     tourPointActiveIdx: 0,

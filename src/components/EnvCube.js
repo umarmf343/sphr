@@ -257,12 +257,26 @@ class EnvCube {
   getVisibleFaces() {
     const { camera } = Store.getState();
     const visibleFaces = [];
+    const cameraPosition = new THREE.Vector3().copy(camera.position);
+    const faceCenter = new THREE.Vector3();
+    const direction = new THREE.Vector3();
+
+    this.group.updateMatrixWorld(true);
 
     this.group.children.forEach((child, i) => {
       if (this.fullResolutionFaces.has(i)) return;
 
-      this.raycaster.setFromCamera(camera.position, camera);
-      const intersects = this.raycaster.intersectObject(child);
+      child.updateMatrixWorld(true);
+      child.getWorldPosition(faceCenter);
+
+      direction.subVectors(faceCenter, cameraPosition);
+      if (direction.lengthSq() === 0) {
+        return;
+      }
+
+      direction.normalize();
+      this.raycaster.set(cameraPosition, direction);
+      const intersects = this.raycaster.intersectObject(child, false);
 
       if (intersects.length > 0) {
         visibleFaces.push(i);
@@ -344,7 +358,15 @@ export default class EnvCubeManager {
     // Calculate the movement direction in world space
     const movementDirectionWorld = cameraLerpTarget.clone().sub(cameraPosition).normalize();
 
-    this.envCubeOutgoing.materials.forEach(material => {
+    this.envCubeOutgoing.group.updateMatrixWorld(true);
+
+    this.envCubeOutgoing.materials.forEach((material, faceI) => {
+      const mesh = this.envCubeOutgoing.group.children[faceI];
+      if (!material.uniforms || !mesh) {
+        return;
+      }
+
+      mesh.updateMatrixWorld(true);
 
       // Get the face normal direction in world space
       const faceNormal = new THREE.Vector3();
@@ -370,7 +392,7 @@ export default class EnvCubeManager {
       }
 
       // Transform the face normal from local space to world space
-      const faceNormalMatrix = new THREE.Matrix3().getNormalMatrix(this.envCubeOutgoing.group.matrixWorld);
+      const faceNormalMatrix = new THREE.Matrix3().getNormalMatrix(mesh.matrixWorld);
       faceNormal.applyMatrix3(faceNormalMatrix).normalize();
 
       // Calculate the dot product between the movement direction and the face normal
@@ -386,6 +408,8 @@ export default class EnvCubeManager {
       } else {
         stretchDirection.set(0, Math.sign(projectedMovement.y), 0);
       }
+
+      material.uniforms.movementDirection.value.copy(stretchDirection);
 
     });
   }
