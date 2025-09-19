@@ -76,12 +76,16 @@ export default class PointerHandlers {
 
         Store.setState({
           cursor: {
-            position: new THREE.Vector3(), 
-            rotation: new THREE.Quaternion(), 
+            position: new THREE.Vector3(),
+            rotation: new THREE.Quaternion(),
           },
         });
 
+        this.startPinchDistance = null;
+
       }
+    } else {
+      this.startPinchDistance = null;
     }
   }
 
@@ -208,10 +212,11 @@ export default class PointerHandlers {
   }
 
   handleTouchTap(event) {
-    if (event.touches.length > 0) {
-      const touch = event.touches[0];
+    const touch = (event.changedTouches && event.changedTouches[0]) || (event.touches && event.touches[0]);
+    if (touch) {
       this.processInteractionClick(touch.clientX, touch.clientY, event);
     }
+    this.startPinchDistance = null;
   }
 
   processInteractionClick(clientX, clientY, event) {
