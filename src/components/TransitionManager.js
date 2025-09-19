@@ -1,5 +1,6 @@
 // TransitionManager.js
-import * as THREE from 'three'
+import * as THREE from 'three';
+
 import { setupSdk } from '@matterport/sdk';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
