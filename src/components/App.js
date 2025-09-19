@@ -265,12 +265,16 @@ export default class App {
 
     } else {
       const nodeLoadingScreen = document.getElementById("node-loading-screen");
-      nodeLoadingScreen.classList.remove("hidden"); 
+      if (nodeLoadingScreen) {
+        nodeLoadingScreen.classList.remove("hidden");
+      }
 
       this.loadNode(node, () => {
         // callback after loading:
         // hide loading screen
-        nodeLoadingScreen.classList.add("hidden"); 
+        if (nodeLoadingScreen) {
+          nodeLoadingScreen.classList.add("hidden");
+        }
 
         if (this.areAllFacesLoaded(node)) {
           // perform navigation
@@ -282,7 +286,9 @@ export default class App {
           console.error("Loading had error:", node);
 
           // Handle the scenario where faces couldn't be loaded (e.g., show an error message)
-          nodeLoadingScreen.classList.add("hidden"); 
+          if (nodeLoadingScreen) {
+            nodeLoadingScreen.classList.add("hidden");
+          }
         }
       });
     }

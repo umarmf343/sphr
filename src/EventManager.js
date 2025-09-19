@@ -16,22 +16,31 @@ export default class EventManager {
 
     // ui
     if (app && app.cameraHandlers) {
-      document.getElementById("view-mode-button").addEventListener('click', app.cameraHandlers.toggleViewMode.bind(app.cameraHandlers));
+      const viewModeButton = document.getElementById("view-mode-button");
+      if (viewModeButton) {
+        viewModeButton.addEventListener('click', app.cameraHandlers.toggleViewMode.bind(app.cameraHandlers));
+      }
     }
     // pointer events
     if (app && app.pointerHandlers) {
-
-      canvas.addEventListener('mousemove', app.pointerHandlers.handleMouseMove);
+      if (canvas) {
+        canvas.addEventListener('mousemove', app.pointerHandlers.handleMouseMove);
+      }
       document.addEventListener('mousedown', this.handleMouseDown.bind(this));
       document.addEventListener('mouseup', this.handleMouseUp.bind(this));
-      
+
       // touch events
-      canvas.addEventListener('touchmove', app.pointerHandlers.handleTouchMove.bind(app.pointerHandlers));
+      if (canvas) {
+        canvas.addEventListener('touchmove', app.pointerHandlers.handleTouchMove.bind(app.pointerHandlers));
+      }
       document.addEventListener('touchstart', this.handleTouchStart.bind(this));
       document.addEventListener('touchend', this.handleTouchEnd.bind(this));
     }
 
-    document.getElementById("full-screen-button").addEventListener('click', this.handleFullscreenToggle.bind(this));
+    const fullScreenButton = document.getElementById("full-screen-button");
+    if (fullScreenButton) {
+      fullScreenButton.addEventListener('click', this.handleFullscreenToggle.bind(this));
+    }
     // document.getElementById("guide-toggle-button").addEventListener('click', this.handleGuideToggle.bind(this));
     // document.getElementById("free-explore-toggle-button").addEventListener('click', this.handleGuideToggle.bind(this));
     // document.getElementById("audio-on-button").addEventListener('click', this.audioMute.bind(this));
@@ -51,7 +60,7 @@ export default class EventManager {
   _disableTouchMoveOnNextPrev() {
     const nextButton = document.getElementById("next-button");
     const prevButton = document.getElementById("prev-button");
-    const buttons = [nextButton, prevButton];
+    const buttons = [nextButton, prevButton].filter(Boolean);
 
     let touchStartY = 0;
 
@@ -172,12 +181,14 @@ export default class EventManager {
 
     const fullscreenOnSVG = document.getElementById("full-screen-on");
     const fullscreenOffSVG = document.getElementById("full-screen-off");
-    if (isFullscreen) {
-      fullscreenOnSVG.classList.remove("hidden");
-      fullscreenOffSVG.classList.add("hidden");
-    } else {
-      fullscreenOnSVG.classList.add("hidden");
-      fullscreenOffSVG.classList.remove("hidden");
+    if (fullscreenOnSVG && fullscreenOffSVG) {
+      if (isFullscreen) {
+        fullscreenOnSVG.classList.remove("hidden");
+        fullscreenOffSVG.classList.add("hidden");
+      } else {
+        fullscreenOnSVG.classList.add("hidden");
+        fullscreenOffSVG.classList.remove("hidden");
+      }
     }
 
     // Exit fullscreen mode if currently in fullscreen mode

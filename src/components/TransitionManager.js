@@ -45,9 +45,14 @@ class TransitionManager {
 
         // Extract the space ID from the src URL
         let spaceId;
-        if (tour) {
-            spaceId = tour.tour_data.spaces[tourSpaceActiveIdx].mpid;
-        } else {
+        const tourSpaces = tour && tour.tour_data && tour.tour_data.spaces;
+        if (Array.isArray(tourSpaces) && tourSpaces[tourSpaceActiveIdx]) {
+            spaceId = tourSpaces[tourSpaceActiveIdx].mpid;
+        } else if (tour) {
+            console.warn('Matterport tour missing space data, falling back to space src.');
+        }
+
+        if (!spaceId) {
 
             const url = new URL(space.src);
             spaceId = url.searchParams.get('m');
@@ -59,7 +64,10 @@ class TransitionManager {
         }
 
         // Hide Three.js canvas
-        document.querySelector('canvas.webgl').style.display = 'none';
+        const webglCanvas = document.querySelector('canvas.webgl');
+        if (webglCanvas) {
+            webglCanvas.style.display = 'none';
+        }
 
         let showMattertags = 1;
         if (tour) {
@@ -86,7 +94,7 @@ class TransitionManager {
 
         await this.connectToMatterportSDK('y1bwseat2gwueyxz59987z4ud', options);
 
-        if (tour.tour_data.sceneGraph && tour.tour_data.sceneGraph.length) {
+        if (tour && tour.tour_data && tour.tour_data.sceneGraph && tour.tour_data.sceneGraph.length) {
 
             this.sceneGraph = [];
             this.loader = new GLTFLoader();
@@ -97,7 +105,7 @@ class TransitionManager {
             this.loader.setDRACOLoader(dracoLoader);
 
             this.initThreeJsCanvas();
-       }
+        }
     }
 
     async connectToMatterportSDK(sdkKey, options) {
@@ -146,7 +154,10 @@ class TransitionManager {
 
 
         // Show Three.js canvas
-        document.querySelector('canvas.webgl').style.display = 'block';
+        const webglCanvas = document.querySelector('canvas.webgl');
+        if (webglCanvas) {
+            webglCanvas.style.display = 'block';
+        }
 
         let initialNode = null;
         let initialOrbitTarget = null;
