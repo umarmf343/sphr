@@ -111,7 +111,9 @@ store.loadingManager.onProgress = (url, loaded, total) => {
   const loadingText = document.getElementById("loading-text-notification-percent")
 
   // Update the text content with the loading percentage
-  loadingText.textContent =  percentComplete + '%';
+  if (loadingText) {
+    loadingText.textContent =  percentComplete + '%';
+  }
 };
 
 if (space.type === "matterport") {
@@ -125,7 +127,9 @@ if (space.type === "matterport") {
     const progress = timestamp - start;
     const percentComplete = Math.min(100, Math.floor((progress / 600) * 100));
 
-    loadingText.textContent = percentComplete + '%';
+    if (loadingText) {
+      loadingText.textContent = percentComplete + '%';
+    }
 
     if (percentComplete < 100) {
       requestAnimationFrame(animateLoading);
