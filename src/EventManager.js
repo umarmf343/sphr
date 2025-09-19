@@ -16,7 +16,10 @@ export default class EventManager {
 
     // ui
     if (app && app.cameraHandlers) {
-      document.getElementById("view-mode-button").addEventListener('click', app.cameraHandlers.toggleViewMode.bind(app.cameraHandlers));
+      const viewModeButton = document.getElementById("view-mode-button");
+      if (viewModeButton) {
+        viewModeButton.addEventListener('click', app.cameraHandlers.toggleViewMode.bind(app.cameraHandlers));
+      }
     }
     // pointer events
     if (app && app.pointerHandlers) {
@@ -31,7 +34,10 @@ export default class EventManager {
       document.addEventListener('touchend', this.handleTouchEnd.bind(this));
     }
 
-    document.getElementById("full-screen-button").addEventListener('click', this.handleFullscreenToggle.bind(this));
+    const fullScreenButton = document.getElementById("full-screen-button");
+    if (fullScreenButton) {
+      fullScreenButton.addEventListener('click', this.handleFullscreenToggle.bind(this));
+    }
     // document.getElementById("guide-toggle-button").addEventListener('click', this.handleGuideToggle.bind(this));
     // document.getElementById("free-explore-toggle-button").addEventListener('click', this.handleGuideToggle.bind(this));
     // document.getElementById("audio-on-button").addEventListener('click', this.audioMute.bind(this));
@@ -51,7 +57,7 @@ export default class EventManager {
   _disableTouchMoveOnNextPrev() {
     const nextButton = document.getElementById("next-button");
     const prevButton = document.getElementById("prev-button");
-    const buttons = [nextButton, prevButton];
+    const buttons = [nextButton, prevButton].filter(Boolean);
 
     let touchStartY = 0;
 
