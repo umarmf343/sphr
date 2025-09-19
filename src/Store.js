@@ -48,20 +48,26 @@ if (space.type === "spaces") {
 if (!tourGuidedAutoplay) {
     const autoplayCheck = document.getElementById("autoplay");
     if (autoplayCheck) {
-        autoplayCheck.checked = false; 
+        autoplayCheck.checked = false;
     }
 
     const tourUiButtons = document.getElementById("tour-ui-buttons");
-    tourUiButtons.style.transition = "opacity 0.5s";
-    tourUiButtons.style.opacity = 1;
+    if (tourUiButtons) {
+        tourUiButtons.style.transition = "opacity 0.5s";
+        tourUiButtons.style.opacity = 1;
+    }
 }
 
 if (!defaultShowText) {
     const wordsCheckbox = document.getElementById("words");
     const tourUiNavpoint = document.getElementById("tour-ui-navpoint");
-    wordsCheckbox.checked = false; 
-    tourUiNavpoint.style.transition = "opacity 0.5s";
-    tourUiNavpoint.style.opacity = 0;
+    if (wordsCheckbox) {
+        wordsCheckbox.checked = false;
+    }
+    if (tourUiNavpoint) {
+        tourUiNavpoint.style.transition = "opacity 0.5s";
+        tourUiNavpoint.style.opacity = 0;
+    }
 }
 
 // Canvas
