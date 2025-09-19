@@ -18,6 +18,7 @@ import Store from '../Store';
 class TransitionManager {
     constructor() {
         const { space, tour, tourGuidedMode } = Store.getState();
+        this.webglCanvas = null;
     }
 
     initializeSpace(spaceData) {
@@ -26,6 +27,25 @@ class TransitionManager {
         } else {
             this.switchToCustomSpace();
         }
+    }
+
+    getWebglCanvas() {
+        if (!this.webglCanvas || !document.body.contains(this.webglCanvas)) {
+            this.webglCanvas = document.querySelector('canvas.webgl');
+        }
+
+        return this.webglCanvas;
+    }
+
+    setWebglCanvasVisibility(shouldShow) {
+        const canvas = this.getWebglCanvas();
+
+        if (!canvas) {
+            console.warn('Three.js canvas element not found when toggling visibility.');
+            return;
+        }
+
+        canvas.style.display = shouldShow ? 'block' : 'none';
     }
 
     async switchToMatterport() {
@@ -65,7 +85,7 @@ class TransitionManager {
         }
 
         // Hide Three.js canvas
-        document.querySelector('canvas.webgl').style.display = 'none';
+        this.setWebglCanvasVisibility(false);
 
         let showMattertags = 1;
         if (tour) {
@@ -152,7 +172,7 @@ class TransitionManager {
 
 
         // Show Three.js canvas
-        document.querySelector('canvas.webgl').style.display = 'block';
+        this.setWebglCanvasVisibility(true);
 
         let initialNode = null;
         let initialOrbitTarget = null;
