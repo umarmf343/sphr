@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SPHR – Spatial Hackable Reality</title>
+  </head>
+  <body class="h-full overflow-hidden bg-theme-900 text-white">
+    <canvas class="webgl"></canvas>
+
+    <div id="loading-screen" class="fixed inset-0 z-40 flex h-full flex-col bg-theme-900 text-white sm:flex-row">
+      <div id="loading-canvas" class="relative flex-1 min-h-[40vh]"></div>
+      <div id="loading-text-notification" class="flex w-full flex-col justify-center gap-6 bg-theme-900/90 px-8 py-12 opacity-50 sm:w-5/12">
+        <div id="title-outer" class="opacity-0">
+          <h1 id="loading-title" class="font-serif text-3xl uppercase tracking-[0.4em] opacity-0">Loading Experience</h1>
+          <h2 id="loading-title2" class="mt-2 font-sans text-sm uppercase tracking-[0.6em] opacity-0">Preparing Space Assets</h2>
+        </div>
+        <p id="loading-subtitle" class="max-w-md font-sans text-base text-theme-200 opacity-0">
+          Hang tight while we assemble textures, lighting, and interactive elements for this tour.
+        </p>
+        <p class="font-sans text-xs uppercase tracking-[0.6em] text-theme-300">
+          Progress <span id="loading-text-notification-percent">0%</span>
+        </p>
+        <div id="loading-action-buttons" class="flex flex-wrap items-center gap-4">
+          <button id="loading-audio-on-button" type="button" class="accent-button hidden border border-theme-100 px-6 py-2 text-xs uppercase tracking-[0.6em]">
+            Sound On
+          </button>
+          <button id="loading-audio-mute-button" type="button" class="accent-button border border-theme-100 px-6 py-2 text-xs uppercase tracking-[0.6em]">
+            Mute
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="node-loading-screen" class="pointer-events-none fixed inset-0 z-30 hidden items-center justify-center">
+      <div class="rounded-xl bg-black/70 px-8 py-6 text-center font-sans text-sm uppercase tracking-[0.5em] text-white">
+        Loading next location…
+      </div>
+    </div>
+
+    <div id="hud-container" class="pointer-events-none fixed inset-0 z-20"></div>
+
+    <div id="tour-ui" class="pointer-events-none fixed inset-0 z-20 hidden flex-col justify-end">
+      <div id="tour-ui-display" class="pointer-events-auto relative w-full bg-gradient-to-t from-black/80 via-black/20 to-transparent px-6 py-10 sm:absolute sm:right-0 sm:top-0 sm:h-full sm:w-1/2 sm:bg-gradient-to-l">
+        <div id="tour-ui-content" class="relative flex max-w-xl flex-col gap-6 sm:ml-auto">
+          <div id="tour-ui-navpoint" class="font-sans text-xs uppercase tracking-[0.6em] text-theme-200">
+            Guided Tour
+          </div>
+          <div id="tour-point-text" class="tour-point-text space-y-4 font-sans text-lg leading-relaxed md:text-xl">
+            <div id="tour-point-text-main" class="font-serif">
+              <p>Welcome to SPHR.</p>
+              <p>Use the controls below to move between curated highlights.</p>
+            </div>
+            <div id="tour-point-text-secondary" class="opacity-70">
+              Immerse yourself in a hackable spatial storytelling toolkit.
+            </div>
+          </div>
+          <div id="tour-ui-buttons" class="flex flex-wrap items-center gap-4">
+            <button id="prev-button" type="button" class="accent-button cursor-not-allowed border border-theme-100 bg-transparent px-6 py-2 text-xs uppercase tracking-[0.6em] text-white opacity-10" disabled>
+              Previous
+            </button>
+            <button id="next-button" type="button" class="accent-button border border-theme-100 bg-transparent px-6 py-2 text-xs uppercase tracking-[0.6em] text-white">
+              Next
+            </button>
+            <label class="flex items-center gap-2 text-xs uppercase tracking-[0.5em]">
+              <input id="autoplay" type="checkbox" class="h-4 w-4 border-theme-100 text-theme-500" /> Autoplay
+            </label>
+            <label class="flex items-center gap-2 text-xs uppercase tracking-[0.5em]">
+              <input id="words" type="checkbox" class="h-4 w-4 border-theme-100 text-theme-500" checked /> Text
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pointer-events-none fixed top-4 right-4 z-30 flex flex-col items-end gap-3">
+      <button id="view-mode-button" type="button" class="pointer-events-auto flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-4 py-2 text-xs uppercase tracking-[0.5em] text-white">
+        <span id="view-mode-fpv-icon" aria-hidden="true">◉</span>
+        <span id="view-mode-orbit-icon" class="hidden" aria-hidden="true">◎</span>
+        View Mode
+      </button>
+      <button id="full-screen-button" type="button" class="pointer-events-auto flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-4 py-2 text-xs uppercase tracking-[0.5em] text-white">
+        <span id="full-screen-on" aria-hidden="true">⤢</span>
+        <span id="full-screen-off" class="hidden" aria-hidden="true">⤡</span>
+        Fullscreen
+      </button>
+      <button id="audio-on-button" type="button" class="pointer-events-auto hidden rounded-full border border-white/20 bg-black/30 px-4 py-2 text-xs uppercase tracking-[0.5em] text-white">
+        Sound On
+      </button>
+      <button id="audio-mute-button" type="button" class="pointer-events-auto rounded-full border border-white/20 bg-black/30 px-4 py-2 text-xs uppercase tracking-[0.5em] text-white">
+        Mute
+      </button>
+      <button id="guide-toggle-button" type="button" class="pointer-events-auto rounded-full border border-white/20 bg-black/30 px-4 py-2 text-xs uppercase tracking-[0.5em] text-white">
+        Guided Mode
+      </button>
+      <button id="free-explore-toggle-button" type="button" class="pointer-events-auto hidden rounded-full border border-white/20 bg-black/30 px-4 py-2 text-xs uppercase tracking-[0.5em] text-white">
+        Free Explore
+      </button>
+    </div>
+
+    <div id="maps-attribution" class="pointer-events-none fixed bottom-4 left-4 z-10 text-xs uppercase tracking-[0.5em] text-theme-300">
+      © Map data providers
+    </div>
+
+    <div id="tour-ui-display-portal" class="hidden"></div>
+    <div id="space_data" class="hidden"></div>
+    <div id="tour_data" class="hidden"></div>
+    <div id="ordered_spaces_data" class="hidden"></div>
+    <div id="space_mesh" class="hidden"></div>
+  </body>
+</html>
