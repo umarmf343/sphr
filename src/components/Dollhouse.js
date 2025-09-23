@@ -23,12 +23,16 @@ export default class Dollhouse {
     dracoLoader.setDecoderPath('https://static.mused.org/spaceshare/draco1.5.6/');
     loader.setDRACOLoader(dracoLoader);
     
-    try {
-      loader.load(space.mesh, gltf => this.onLoad(gltf), undefined, function (error) {
-        console.error('An error occurred while loading the model:', error);
-      });
-    } catch (e) {
-      console.error('Caught error:', e);
+    if (!space.mesh) {
+      console.warn('No dollhouse mesh configured for this space. Skipping dollhouse load.');
+    } else {
+      try {
+        loader.load(space.mesh, gltf => this.onLoad(gltf), undefined, function (error) {
+          console.error('An error occurred while loading the model:', error);
+        });
+      } catch (e) {
+        console.error('Caught error:', e);
+      }
     }
 
     if (!isMobile) {

@@ -72,7 +72,21 @@ if (!defaultShowText) {
 }
 
 // Canvas
-const canvas = document.querySelector('canvas.webgl');
+let canvas = document.querySelector('canvas.webgl');
+
+if (!canvas) {
+    console.warn('Canvas element with class "webgl" not found. Creating one for development.');
+    canvas = document.createElement('canvas');
+    canvas.classList.add('webgl');
+
+    if (document.body) {
+        document.body.appendChild(canvas);
+    } else {
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.appendChild(canvas);
+        });
+    }
+}
 
 // camera
 const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.02, 10000);
