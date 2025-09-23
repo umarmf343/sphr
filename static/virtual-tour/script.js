@@ -1,3 +1,11 @@
+import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.module.js";
+import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.155.0/examples/jsm/controls/OrbitControls.js";
+import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.155.0/examples/jsm/loaders/GLTFLoader.js";
+
+window.THREE = THREE;
+THREE.GLTFLoader = GLTFLoader;
+THREE.OrbitControls = OrbitControls;
+
 let scene;
 let camera;
 let renderer;
@@ -27,7 +35,7 @@ function init() {
   renderer.setPixelRatio(window.devicePixelRatio);
   document.getElementById("webgl-output").appendChild(renderer.domElement);
 
-  controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.dampingFactor = 0.08;
   controls.target.set(0, 1, 0);
