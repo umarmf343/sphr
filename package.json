@@ -11,7 +11,11 @@
     "@babel/core": "^7.28.4",
     "@babel/preset-env": "^7.28.3",
     "@matterport/sdk": "^1.4.24",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.18",
     "3d-tiles-renderer": "^0.3.21",
+    "autoprefixer": "^10.4.21",
     "babel-loader": "^9.2.1",
     "canvas-sketch-util": "^1.10.0",
     "copy-webpack-plugin": "^13.0.1",
@@ -26,6 +30,7 @@
     "postcss-loader": "^7.3.3",
     "raw-loader": "^4.0.2",
     "style-loader": "^2.0.0",
+    "tailwindcss": "^3.4.17",
     "three": "^0.155.0",
     "three-custom-shader-material": "^5.4.0",
     "three-good-godrays": "github:lukehollis/three-good-godrays",
@@ -47,14 +52,9 @@
     ]
   },
   "devDependencies": {
-    "@tailwindcss/aspect-ratio": "^0.4.2",
-    "@tailwindcss/forms": "^0.5.10",
-    "@tailwindcss/typography": "^0.5.18",
     "@webpack-cli/serve": "^2.0.5",
-    "autoprefixer": "^10.4.21",
     "internal-ip": "^8.0.0",
     "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.17",
     "webpack": "^5.101.3"
   },
   "overrides": {
