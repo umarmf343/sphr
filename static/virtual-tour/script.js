@@ -1,17 +1,6 @@
-if (typeof THREE === "undefined") {
-  throw new Error(
-    "THREE.js is required for the virtual tour prototype. Ensure the CDN script is loaded before script.js."
-  );
-}
-
-const OrbitControls = THREE.OrbitControls;
-const GLTFLoader = THREE.GLTFLoader;
-
-if (!OrbitControls || !GLTFLoader) {
-  throw new Error(
-    "OrbitControls and GLTFLoader must be registered on the global THREE namespace. Check that the supporting CDN scripts are included."
-  );
-}
+import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.module.js";
+import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.155.0/examples/jsm/controls/OrbitControls.js";
+import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.155.0/examples/jsm/loaders/GLTFLoader.js";
 
 let scene;
 let camera;
