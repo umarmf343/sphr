@@ -5,12 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Virtual Tour Prototype</title>
     <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/three@0.155.0/examples/js/controls/OrbitControls.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/three@0.155.0/examples/js/loaders/GLTFLoader.js"
+      defer
+    ></script>
   </head>
   <body>
     <div id="webgl-output"></div>
     <div id="ui-layer">
       <div id="info-panel"></div>
     </div>
-    <script type="module" src="script.js"></script>
+    <script src="script.js" defer></script>
   </body>
 </html>
