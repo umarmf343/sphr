@@ -27,6 +27,7 @@
     "three": "^0.155.0",
     "three-custom-shader-material": "^5.4.0",
     "three-good-godrays": "github:lukehollis/three-good-godrays",
+    "webpack-cli": "^5.1.4",
     "webpack-merge": "^5.7.3"
   },
   "browserslist": {
@@ -54,7 +55,6 @@
     "tailwindcss": "^3.4.17",
     "webpack": "^5.101.3",
     "webpack-bundle-tracker": "^3.0.1",
-    "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.2.2"
   },
   "overrides": {
