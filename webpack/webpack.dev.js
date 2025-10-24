@@ -21,6 +21,16 @@ module.exports = merge(
             host: '0.0.0.0',
             allowedHosts: 'all',
             port: 3000,
+            headers: {
+              'Content-Security-Policy': [
+                "default-src 'self'",
+                "connect-src 'self' ws://localhost:3000 ws://0.0.0.0:3000",
+                "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+                "style-src 'self' 'unsafe-inline'",
+                "img-src 'self' data: blob:",
+                "font-src 'self' data:"
+              ].join('; '),
+            },
             historyApiFallback: {
               index: '/index.html',
             },
