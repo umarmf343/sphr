@@ -29,7 +29,9 @@ module.exports = merge(
             },
             static: {
               directory: path.resolve(__dirname, "..", "static"),
-              staticOptions: {},
+              staticOptions: {
+                dotfiles: 'allow',
+              },
               publicPath: "/static/",
               serveIndex: true,
               watch: true,
