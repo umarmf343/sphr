@@ -7,13 +7,30 @@ const path = require('path')
 const webpack = require('webpack');
 const dotenv = require('dotenv');
 
-// Call dotenv and it will return an Object with a parsed key 
-const env = dotenv.config().parsed;
+// Load environment variables from the optional .env file and fall back to
+// existing process environment values. When the .env file is missing we still
+// need to provide sane defaults so the webpack build does not crash.
+const dotenvResult = dotenv.config();
 
-// Reduce it to a nice object
-const envKeys = Object.keys(env).reduce((prev, next) => {
-  prev[`process.env.${next}`] = JSON.stringify(env[next]);
-  return prev;
+if (dotenvResult.error && dotenvResult.error.code !== 'ENOENT') {
+  throw dotenvResult.error;
+}
+
+const envFromFile = dotenvResult.parsed || {};
+
+// Ensure that any environment variables referenced in the source always have
+// a defined value to avoid runtime ReferenceError when process.env is
+// evaluated in the browser bundle.
+const requiredEnvKeys = new Set([
+  'GOOGLE_MAPS_API_KEY',
+  'GOOGLE_TILES_API_KEY',
+  ...Object.keys(envFromFile),
+]);
+
+const envKeys = Array.from(requiredEnvKeys).reduce((acc, key) => {
+  const value = envFromFile[key] ?? process.env[key] ?? '';
+  acc[`process.env.${key}`] = JSON.stringify(value);
+  return acc;
 }, {});
 
 module.exports = {
