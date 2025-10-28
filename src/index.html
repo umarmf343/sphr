@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SPHR Demo</title>
+  </head>
+  <body class="bg-theme-900 text-white font-sans">
+    <canvas class="webgl" aria-hidden="true"></canvas>
+
+    <div id="loading-screen" class="fixed inset-0 flex flex-col justify-between pointer-events-none">
+      <div id="title-outer" class="p-6 text-center pointer-events-auto">
+        <h1 id="loading-title" class="text-2xl font-serif">Loading experience</h1>
+        <h2 id="loading-title2" class="text-lg opacity-80"></h2>
+        <p id="loading-subtitle" class="mt-2 text-sm opacity-70"></p>
+      </div>
+      <div id="loading-canvas" class="flex-1 pointer-events-auto"></div>
+      <div class="p-6 space-y-4 pointer-events-auto">
+        <div id="loading-text-notification" class="text-center text-sm tracking-widest uppercase">
+          <span id="loading-text-notification-percent">0%</span>
+        </div>
+        <div id="loading-action-buttons" class="flex items-center justify-center gap-4">
+          <button id="loading-audio-on-button" class="tour-action-button" type="button">Enable audio</button>
+          <button id="loading-audio-mute-button" class="tour-action-button" type="button">Mute audio</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="hud-container" class="pointer-events-none">
+      <div class="absolute inset-x-0 bottom-0 p-6 flex flex-col gap-4 pointer-events-auto">
+        <div id="tour-ui" class="hidden flex flex-col gap-4">
+          <div id="tour-ui-buttons" class="flex flex-wrap gap-3 justify-center">
+            <button id="prev-button" class="tour-action-button" type="button">Previous</button>
+            <button id="next-button" class="tour-action-button" type="button">Next</button>
+            <button id="view-mode-button" class="tour-action-button flex items-center gap-2" type="button">
+              <span id="view-mode-fpv-icon">FPV</span>
+              <span id="view-mode-orbit-icon" class="hidden">Orbit</span>
+            </button>
+            <button id="full-screen-button" class="tour-action-button flex items-center gap-2" type="button">
+              <span id="full-screen-on">Fullscreen</span>
+              <span id="full-screen-off" class="hidden">Exit</span>
+            </button>
+            <button id="audio-on-button" class="tour-action-button" type="button">🔊</button>
+            <button id="audio-mute-button" class="tour-action-button hidden" type="button">🔇</button>
+            <button id="guide-toggle-button" class="tour-action-button" type="button">Guide</button>
+            <button id="free-explore-toggle-button" class="tour-action-button" type="button">Explore</button>
+          </div>
+
+          <div id="tour-ui-display" class="relative mx-auto w-full max-w-3xl rounded-lg bg-black/30 p-4">
+            <div id="tour-ui-content" class="flex flex-col gap-3">
+              <div id="tour-point-text" class="space-y-2">
+                <div id="tour-point-text-main" class="space-y-2 text-base leading-relaxed"></div>
+                <div id="tour-point-text-secondary" class="text-sm opacity-80"></div>
+              </div>
+              <div id="tour-ui-navpoint" class="flex flex-wrap gap-4 text-sm">
+                <label class="flex items-center gap-2">
+                  <input id="autoplay" type="checkbox" checked />
+                  Autoplay narration
+                </label>
+                <label class="flex items-center gap-2">
+                  <input id="words" type="checkbox" checked />
+                  Show text overlay
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="debug-container" class="absolute top-4 left-4 text-xs bg-black/60 px-3 py-2 rounded pointer-events-auto"></div>
+    </div>
+
+    <div id="node-loading-screen" class="hidden"></div>
+    <div id="tour-photograph-container" class="hidden"></div>
+    <div id="maps-attribution" class="hidden"></div>
+
+    <video id="narrator" class="hidden" crossorigin="anonymous"></video>
+    <iframe id="mp-showcase" class="hidden"></iframe>
+
+    <form id="space_edit_form" class="hidden" method="post">
+      <input id="space_data_nodes" name="space_data_nodes" type="hidden" value="" />
+    </form>
+    <form id="tour_edit_form" class="hidden" method="post">
+      <input id="tour_data_input" name="tour_data" type="hidden" value="" />
+    </form>
+
+    <script id="space_data" type="application/json">
+      {
+        "id": "2",
+        "type": "spaces",
+        "title": "The Tomb of Nefertari",
+        "mesh": "https://static.mused.org/spaceshare/nefertari_tomb_dollhouse.glb",
+        "space_data": {
+          "nodes": [
+            {
+              "uuid": "IMG_20231101_074927_00_479",
+              "image": "spaceshare/IMG_20231101_074927_00_479.jpg",
+              "index": 0,
+              "position": { "x": 64.41091673555964, "y": 11.991629130243957, "z": 3.7581584995137596 },
+              "rotation": { "x": -0.4679478281301798, "y": -1.5699190012618083, "z": -2.6941590536699116 },
+              "resolution": "4096",
+              "floorPosition": { "x": 64.41091673555965, "y": 6.678567170874559, "z": 3.7581584995137605 }
+            }
+          ],
+          "initialNode": "IMG_20231101_074927_00_479",
+          "sceneSettings": {
+            "nodes": {
+              "scale": 0.26,
+              "offsetPosition": { "x": 0, "y": 0, "z": 0 },
+              "offsetRotation": { "x": 0, "y": 0, "z": 0 }
+            },
+            "dollhouse": {
+              "scale": 1.1,
+              "offsetPosition": { "x": 8.83, "y": 2.16, "z": 2.26 },
+              "offsetRotation": { "x": 0, "y": -0.22, "z": 0 }
+            },
+            "offsetPosition": { "x": 0, "y": 0, "z": 0 },
+            "offsetRotation": { "x": 0, "y": 0, "z": 0 }
+          },
+          "initialRotation": { "polar": -19.4, "azimuth": 44.86 }
+        }
+      }
+    </script>
+
+    <script id="tour_data" type="application/json">
+      {
+        "tour_data": {
+          "title": "Guided tour of Nefertari",
+          "autoplay": false,
+          "defaultShowText": true,
+          "audio": {
+            "start": {
+              "url": "https://static.mused.org/sounds/bassdrum_64k.mp3",
+              "audio": null,
+              "options": { "loop": false, "volume": 0.1, "autoplay": false }
+            },
+            "default": {
+              "url": "https://static.mused.org/sounds/default_oud_96k.mp3",
+              "audio": null,
+              "options": { "loop": true, "volume": 0.1, "autoplay": false }
+            },
+            "navigate": {
+              "url": "https://static.mused.org/sounds/bassdrum_64k.mp3",
+              "audio": null,
+              "options": { "loop": false, "volume": 0.1, "autoplay": false }
+            }
+          },
+          "spaces": [
+            {
+              "id": "2",
+              "type": "spaces",
+              "title": "The Tomb of Nefertari, Valley of the Queens",
+              "tourpoints": [
+                {
+                  "nodeUUID": "IMG_20231101_074927_00_479",
+                  "text": "Welcome to the tomb of Nefertari, Queen of Pharaoh Ramesses II.",
+                  "secondaryText": "Move around the chamber to explore the vivid wall paintings.",
+                  "pan": "left",
+                  "zoom": 0,
+                  "files": [],
+                  "models": [],
+                  "sounds": ["default"],
+                  "rotation": { "polar": -2, "azimuth": 46 },
+                  "viewMode": "FPV",
+                  "targetType": "NODE",
+                  "annotations": [],
+                  "textPosition": "left"
+                }
+              ]
+            }
+          ],
+          "sceneGraph": [],
+          "annotationGraph": []
+        }
+      }
+    </script>
+  </body>
+</html>
