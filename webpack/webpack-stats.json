@@ -1,5 +1,5 @@
 {
-  "status": "done",
+  "status": "error",
   "assets": {
     ".gitkeep": {
       "name": ".gitkeep",
@@ -26,25 +26,25 @@
       "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\apple-touch-icon.png",
       "publicPath": "/static/webpack_bundles/apple-touch-icon.png"
     },
-    "bundle.22c6d2aab8f2ce3e6c15.js": {
-      "name": "bundle.22c6d2aab8f2ce3e6c15.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.22c6d2aab8f2ce3e6c15.js",
-      "publicPath": "/static/webpack_bundles/bundle.22c6d2aab8f2ce3e6c15.js"
+    "bundle.a8df0dd8ad9bf4ed99d6.js": {
+      "name": "bundle.a8df0dd8ad9bf4ed99d6.js",
+      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.a8df0dd8ad9bf4ed99d6.js",
+      "publicPath": "/static/webpack_bundles/bundle.a8df0dd8ad9bf4ed99d6.js"
     },
-    "bundle.22c6d2aab8f2ce3e6c15.js.map": {
-      "name": "bundle.22c6d2aab8f2ce3e6c15.js.map",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.22c6d2aab8f2ce3e6c15.js.map",
-      "publicPath": "/static/webpack_bundles/bundle.22c6d2aab8f2ce3e6c15.js.map"
+    "bundle.a8df0dd8ad9bf4ed99d6.js.map": {
+      "name": "bundle.a8df0dd8ad9bf4ed99d6.js.map",
+      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.a8df0dd8ad9bf4ed99d6.js.map",
+      "publicPath": "/static/webpack_bundles/bundle.a8df0dd8ad9bf4ed99d6.js.map"
     },
-    "bundle.eafb7b671b927efb783e.js": {
-      "name": "bundle.eafb7b671b927efb783e.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.eafb7b671b927efb783e.js",
-      "publicPath": "/static/webpack_bundles/bundle.eafb7b671b927efb783e.js"
+    "bundle.c18bed64342ea9a6c41b.js": {
+      "name": "bundle.c18bed64342ea9a6c41b.js",
+      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.c18bed64342ea9a6c41b.js",
+      "publicPath": "/static/webpack_bundles/bundle.c18bed64342ea9a6c41b.js"
     },
-    "bundle.eafb7b671b927efb783e.js.map": {
-      "name": "bundle.eafb7b671b927efb783e.js.map",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.eafb7b671b927efb783e.js.map",
-      "publicPath": "/static/webpack_bundles/bundle.eafb7b671b927efb783e.js.map"
+    "bundle.c18bed64342ea9a6c41b.js.map": {
+      "name": "bundle.c18bed64342ea9a6c41b.js.map",
+      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.c18bed64342ea9a6c41b.js.map",
+      "publicPath": "/static/webpack_bundles/bundle.c18bed64342ea9a6c41b.js.map"
     },
     "copy_locale_data.sh": {
       "name": "copy_locale_data.sh",
@@ -236,20 +236,20 @@
       "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\zh-hans\\ui.json",
       "publicPath": "/static/webpack_bundles/locales/zh-hans/ui.json"
     },
-    "main.bb8a1943bd031a0ad052.hot-update.js": {
-      "name": "main.bb8a1943bd031a0ad052.hot-update.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.bb8a1943bd031a0ad052.hot-update.js",
-      "publicPath": "/static/webpack_bundles/main.bb8a1943bd031a0ad052.hot-update.js"
+    "main.a9eb39dca62ce4a4084f.hot-update.js": {
+      "name": "main.a9eb39dca62ce4a4084f.hot-update.js",
+      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.a9eb39dca62ce4a4084f.hot-update.js",
+      "publicPath": "/static/webpack_bundles/main.a9eb39dca62ce4a4084f.hot-update.js"
     },
-    "main.bb8a1943bd031a0ad052.hot-update.js.map": {
-      "name": "main.bb8a1943bd031a0ad052.hot-update.js.map",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.bb8a1943bd031a0ad052.hot-update.js.map",
-      "publicPath": "/static/webpack_bundles/main.bb8a1943bd031a0ad052.hot-update.js.map"
+    "main.a9eb39dca62ce4a4084f.hot-update.js.map": {
+      "name": "main.a9eb39dca62ce4a4084f.hot-update.js.map",
+      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.a9eb39dca62ce4a4084f.hot-update.js.map",
+      "publicPath": "/static/webpack_bundles/main.a9eb39dca62ce4a4084f.hot-update.js.map"
     },
-    "main.bb8a1943bd031a0ad052.hot-update.json": {
-      "name": "main.bb8a1943bd031a0ad052.hot-update.json",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.bb8a1943bd031a0ad052.hot-update.json",
-      "publicPath": "/static/webpack_bundles/main.bb8a1943bd031a0ad052.hot-update.json"
+    "main.a9eb39dca62ce4a4084f.hot-update.json": {
+      "name": "main.a9eb39dca62ce4a4084f.hot-update.json",
+      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.a9eb39dca62ce4a4084f.hot-update.json",
+      "publicPath": "/static/webpack_bundles/main.a9eb39dca62ce4a4084f.hot-update.json"
     },
     "main.css": {
       "name": "main.css",
@@ -280,9 +280,11 @@
   "chunks": {
     "main": [
       "styles/main.6e5cde0a535a2f94274e.css",
-      "bundle.eafb7b671b927efb783e.js",
-      "main.bb8a1943bd031a0ad052.hot-update.js"
+      "bundle.c18bed64342ea9a6c41b.js",
+      "main.a9eb39dca62ce4a4084f.hot-update.js"
     ]
   },
-  "publicPath": "/static/webpack_bundles/"
+  "publicPath": "/static/webpack_bundles/",
+  "error": "ModuleNotFoundError",
+  "message": "Module not found: Error: Can't resolve './Dollhouse' in 'C:\\Users\\User\\Documents\\UMAR MF\\sphr\\src\\components'"
 }
