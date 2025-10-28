@@ -22,13 +22,27 @@ export default class Dollhouse {
     const dracoLoader = new DRACOLoader();
     dracoLoader.setDecoderPath('https://static.mused.org/spaceshare/draco1.5.6/');
     loader.setDRACOLoader(dracoLoader);
-    
+
+    this.hasLoadedModel = false;
+
+    const handleLoadError = (error) => {
+      console.error('An error occurred while loading the model:', error);
+      this.handleModelLoadFailure();
+    };
+
     try {
-      loader.load(space.mesh, gltf => this.onLoad(gltf), undefined, function (error) {
-        console.error('An error occurred while loading the model:', error);
-      });
+      if (space.mesh) {
+        loader.load(space.mesh, (gltf) => {
+          this.hasLoadedModel = true;
+          this.onLoad(gltf);
+        }, undefined, handleLoadError);
+      } else {
+        console.warn('No mesh provided for space. Using generated fallback geometry.');
+        this.handleModelLoadFailure();
+      }
     } catch (e) {
       console.error('Caught error:', e);
+      this.handleModelLoadFailure();
     }
 
     if (!isMobile) {
@@ -40,6 +54,102 @@ export default class Dollhouse {
     this.initTransformControls();
 
     this.initialTransitionOpacity = 0.2;
+  }
+
+  handleModelLoadFailure() {
+    if (this.hasLoadedModel) {
+      return;
+    }
+
+    const { loadingManager } = Store.getState();
+    if (loadingManager && typeof loadingManager.itemStart === 'function') {
+      loadingManager.itemStart('dollhouse-fallback');
+    }
+
+    console.warn('Falling back to generated dollhouse geometry.');
+
+    const fallbackGltf = this.createFallbackScene();
+    this.hasLoadedModel = true;
+    this.onLoad(fallbackGltf);
+
+    if (loadingManager && typeof loadingManager.itemEnd === 'function') {
+      loadingManager.itemEnd('dollhouse-fallback');
+    }
+  }
+
+  createFallbackScene() {
+    const { space } = Store.getState();
+
+    const fallbackGroup = new THREE.Group();
+    fallbackGroup.name = 'fallback-dollhouse';
+
+    const baseRadius = 12;
+    const floorGeometry = new THREE.CircleGeometry(baseRadius, 48);
+    const floorMaterial = new THREE.MeshStandardMaterial({
+      color: 0x4338ca,
+      opacity: 0.3,
+      transparent: true,
+      side: THREE.DoubleSide,
+    });
+    const floorMesh = new THREE.Mesh(floorGeometry, floorMaterial);
+    floorMesh.rotation.x = -Math.PI / 2;
+    floorMesh.name = 'fallback-floor';
+    fallbackGroup.add(floorMesh);
+
+    const frameGeometry = new THREE.BoxGeometry(baseRadius * 1.5, baseRadius * 0.75, baseRadius * 1.5);
+    const frameEdges = new THREE.EdgesGeometry(frameGeometry);
+    const frameMaterial = new THREE.LineBasicMaterial({
+      color: 0x818cf8,
+      linewidth: 1,
+    });
+    const frame = new THREE.LineSegments(frameEdges, frameMaterial);
+    frame.position.y = (baseRadius * 0.75) / 2;
+    frame.name = 'fallback-frame';
+    fallbackGroup.add(frame);
+
+    if (space && space.space_data && Array.isArray(space.space_data.nodes) && space.space_data.nodes.length) {
+      const nodeGroup = new THREE.Group();
+      nodeGroup.name = 'fallback-nodes';
+
+      const positions = space.space_data.nodes.map((node) => new THREE.Vector3(
+        node.position.x,
+        node.position.y,
+        node.position.z,
+      ));
+
+      const center = new THREE.Vector3();
+      positions.forEach((pos) => center.add(pos));
+      center.divideScalar(positions.length);
+
+      let maxDistance = 1;
+      positions.forEach((pos) => {
+        const distance = pos.distanceTo(center);
+        if (distance > maxDistance) {
+          maxDistance = distance;
+        }
+      });
+
+      const scaleFactor = maxDistance > 0 ? (baseRadius * 0.6) / maxDistance : 1;
+
+      const nodeGeometry = new THREE.SphereGeometry(0.6, 16, 16);
+      const nodeMaterial = new THREE.MeshStandardMaterial({
+        color: 0xfbbf24,
+        emissive: 0xf59e0b,
+        emissiveIntensity: 0.45,
+      });
+
+      space.space_data.nodes.forEach((node, index) => {
+        const mesh = new THREE.Mesh(nodeGeometry, nodeMaterial.clone());
+        mesh.position.copy(positions[index].clone().sub(center).multiplyScalar(scaleFactor));
+        mesh.position.y = Math.max(mesh.position.y, 0.6);
+        mesh.name = `fallback-node-${node.uuid}`;
+        nodeGroup.add(mesh);
+      });
+
+      fallbackGroup.add(nodeGroup);
+    }
+
+    return { scene: fallbackGroup };
   }
 
   onLoad(gltf) {
