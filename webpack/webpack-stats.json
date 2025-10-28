@@ -36,6 +36,16 @@
       "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.22c6d2aab8f2ce3e6c15.js.map",
       "publicPath": "/static/webpack_bundles/bundle.22c6d2aab8f2ce3e6c15.js.map"
     },
+    "bundle.eafb7b671b927efb783e.js": {
+      "name": "bundle.eafb7b671b927efb783e.js",
+      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.eafb7b671b927efb783e.js",
+      "publicPath": "/static/webpack_bundles/bundle.eafb7b671b927efb783e.js"
+    },
+    "bundle.eafb7b671b927efb783e.js.map": {
+      "name": "bundle.eafb7b671b927efb783e.js.map",
+      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.eafb7b671b927efb783e.js.map",
+      "publicPath": "/static/webpack_bundles/bundle.eafb7b671b927efb783e.js.map"
+    },
     "copy_locale_data.sh": {
       "name": "copy_locale_data.sh",
       "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\copy_locale_data.sh",
@@ -226,6 +236,21 @@
       "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\zh-hans\\ui.json",
       "publicPath": "/static/webpack_bundles/locales/zh-hans/ui.json"
     },
+    "main.bb8a1943bd031a0ad052.hot-update.js": {
+      "name": "main.bb8a1943bd031a0ad052.hot-update.js",
+      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.bb8a1943bd031a0ad052.hot-update.js",
+      "publicPath": "/static/webpack_bundles/main.bb8a1943bd031a0ad052.hot-update.js"
+    },
+    "main.bb8a1943bd031a0ad052.hot-update.js.map": {
+      "name": "main.bb8a1943bd031a0ad052.hot-update.js.map",
+      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.bb8a1943bd031a0ad052.hot-update.js.map",
+      "publicPath": "/static/webpack_bundles/main.bb8a1943bd031a0ad052.hot-update.js.map"
+    },
+    "main.bb8a1943bd031a0ad052.hot-update.json": {
+      "name": "main.bb8a1943bd031a0ad052.hot-update.json",
+      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.bb8a1943bd031a0ad052.hot-update.json",
+      "publicPath": "/static/webpack_bundles/main.bb8a1943bd031a0ad052.hot-update.json"
+    },
     "main.css": {
       "name": "main.css",
       "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.css",
@@ -255,7 +280,8 @@
   "chunks": {
     "main": [
       "styles/main.6e5cde0a535a2f94274e.css",
-      "bundle.22c6d2aab8f2ce3e6c15.js"
+      "bundle.eafb7b671b927efb783e.js",
+      "main.bb8a1943bd031a0ad052.hot-update.js"
     ]
   },
   "publicPath": "/static/webpack_bundles/"
