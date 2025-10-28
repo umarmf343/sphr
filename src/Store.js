@@ -165,6 +165,7 @@ const initialStore = {
     materialCache: {},
     tour,
     tourGuidedMode: tour && 'spaces' in tour && tour.spaces.length > 0,
+    tourGuidedMode: Boolean(tour && tour.tour_data && tour.tour_data.spaces && tour.tour_data.spaces.length > 0),
     tourGuidedAutoplay,
     tourSpaceActiveIdx: 0,
     tourPointActiveIdx: 0,

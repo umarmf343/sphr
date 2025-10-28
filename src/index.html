@@ -95,36 +95,44 @@
       {
         "id": "2",
         "type": "spaces",
-        "title": "The Tomb of Nefertari",
-        "mesh": "https://static.mused.org/spaceshare/nefertari_tomb_dollhouse.glb",
+        "title": "Sample Gallery Atrium",
+        "mesh": null,
         "space_data": {
           "nodes": [
             {
-              "uuid": "IMG_20231101_074927_00_479",
-              "image": "spaceshare/IMG_20231101_074927_00_479.jpg",
+              "uuid": "LOCAL_SAMPLE_NODE",
+              "image": "local/placeholder-panorama",
+              "cubeMapFaces": [
+                "/static/textures/placeholder-face0.png",
+                "/static/textures/placeholder-face1.png",
+                "/static/textures/placeholder-face2.png",
+                "/static/textures/placeholder-face3.png",
+                "/static/textures/placeholder-face4.png",
+                "/static/textures/placeholder-face5.png"
+              ],
               "index": 0,
-              "position": { "x": 64.41091673555964, "y": 11.991629130243957, "z": 3.7581584995137596 },
-              "rotation": { "x": -0.4679478281301798, "y": -1.5699190012618083, "z": -2.6941590536699116 },
-              "resolution": "4096",
-              "floorPosition": { "x": 64.41091673555965, "y": 6.678567170874559, "z": 3.7581584995137605 }
+              "position": { "x": 0, "y": 1.6, "z": 0 },
+              "rotation": { "x": 0, "y": 0, "z": 0 },
+              "resolution": "1024",
+              "floorPosition": { "x": 0, "y": 0, "z": 0 }
             }
           ],
-          "initialNode": "IMG_20231101_074927_00_479",
+          "initialNode": "LOCAL_SAMPLE_NODE",
           "sceneSettings": {
             "nodes": {
-              "scale": 0.26,
+              "scale": 1,
               "offsetPosition": { "x": 0, "y": 0, "z": 0 },
               "offsetRotation": { "x": 0, "y": 0, "z": 0 }
             },
             "dollhouse": {
-              "scale": 1.1,
-              "offsetPosition": { "x": 8.83, "y": 2.16, "z": 2.26 },
-              "offsetRotation": { "x": 0, "y": -0.22, "z": 0 }
+              "scale": 1,
+              "offsetPosition": { "x": 0, "y": 0, "z": 0 },
+              "offsetRotation": { "x": 0, "y": 0, "z": 0 }
             },
             "offsetPosition": { "x": 0, "y": 0, "z": 0 },
             "offsetRotation": { "x": 0, "y": 0, "z": 0 }
           },
-          "initialRotation": { "polar": -19.4, "azimuth": 44.86 }
+          "initialRotation": { "polar": 0, "azimuth": 0 }
         }
       }
     </script>
@@ -132,7 +140,7 @@
     <script id="tour_data" type="application/json">
       {
         "tour_data": {
-          "title": "Guided tour of Nefertari",
+          "title": "Sample atrium tour",
           "autoplay": false,
           "defaultShowText": true,
           "audio": {
@@ -156,18 +164,18 @@
             {
               "id": "2",
               "type": "spaces",
-              "title": "The Tomb of Nefertari, Valley of the Queens",
+              "title": "Sample Gallery Atrium",
               "tourpoints": [
                 {
-                  "nodeUUID": "IMG_20231101_074927_00_479",
-                  "text": "Welcome to the tomb of Nefertari, Queen of Pharaoh Ramesses II.",
-                  "secondaryText": "Move around the chamber to explore the vivid wall paintings.",
+                  "nodeUUID": "LOCAL_SAMPLE_NODE",
+                  "text": "Welcome to the sample atrium experience.",
+                  "secondaryText": "Use the controls below to explore the placeholder environment.",
                   "pan": "left",
                   "zoom": 0,
                   "files": [],
                   "models": [],
                   "sounds": ["default"],
-                  "rotation": { "polar": -2, "azimuth": 46 },
+                  "rotation": { "polar": 0, "azimuth": 0 },
                   "viewMode": "FPV",
                   "targetType": "NODE",
                   "annotations": [],

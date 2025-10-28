@@ -23,26 +23,20 @@ export default class Dollhouse {
     dracoLoader.setDecoderPath('https://static.mused.org/spaceshare/draco1.5.6/');
     loader.setDRACOLoader(dracoLoader);
 
-    this.hasLoadedModel = false;
+    const meshUrl = (typeof space.mesh === 'string' && space.mesh.length > 0) ? space.mesh : null;
 
-    const handleLoadError = (error) => {
-      console.error('An error occurred while loading the model:', error);
-      this.handleModelLoadFailure();
-    };
-
-    try {
-      if (space.mesh) {
-        loader.load(space.mesh, (gltf) => {
-          this.hasLoadedModel = true;
-          this.onLoad(gltf);
-        }, undefined, handleLoadError);
-      } else {
-        console.warn('No mesh provided for space. Using generated fallback geometry.');
-        this.handleModelLoadFailure();
+    if (meshUrl) {
+      try {
+        loader.load(meshUrl, gltf => this.onLoad(gltf), undefined, (error) => {
+          console.error('An error occurred while loading the model:', error);
+          this.loadFallbackModel();
+        });
+      } catch (e) {
+        console.error('Caught error:', e);
+        this.loadFallbackModel();
       }
-    } catch (e) {
-      console.error('Caught error:', e);
-      this.handleModelLoadFailure();
+    } else {
+      this.loadFallbackModel();
     }
 
     if (!isMobile) {
@@ -56,83 +50,89 @@ export default class Dollhouse {
     this.initialTransitionOpacity = 0.2;
   }
 
-  handleModelLoadFailure() {
-    if (this.hasLoadedModel) {
-      return;
-    }
-
-    const { loadingManager } = Store.getState();
-    if (loadingManager && typeof loadingManager.itemStart === 'function') {
-      loadingManager.itemStart('dollhouse-fallback');
-    }
-
-    console.warn('Falling back to generated dollhouse geometry.');
-
-    const fallbackGltf = this.createFallbackScene();
-    this.hasLoadedModel = true;
-    this.onLoad(fallbackGltf);
-
-    if (loadingManager && typeof loadingManager.itemEnd === 'function') {
-      loadingManager.itemEnd('dollhouse-fallback');
-    }
-  }
-
-  createFallbackScene() {
-    const { space } = Store.getState();
+  loadFallbackModel() {
+    console.warn('Falling back to generated dollhouse preview.');
 
     const fallbackGroup = new THREE.Group();
-    fallbackGroup.name = 'fallback-dollhouse';
+    fallbackGroup.name = 'GeneratedDollhouse';
 
-    const baseRadius = 12;
-    const floorGeometry = new THREE.CircleGeometry(baseRadius, 48);
-    const floorMaterial = new THREE.MeshStandardMaterial({
-      color: 0x4338ca,
-      opacity: 0.3,
-      transparent: true,
-      side: THREE.DoubleSide,
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    fallbackGroup.add(ambientLight);
+
+    const floorMaterial = new THREE.MeshStandardMaterial({ color: 0x444444 });
+    const wallMaterial = new THREE.MeshStandardMaterial({ color: 0x777777, transparent: true, opacity: 0.6 });
+
+    const floor = new THREE.Mesh(new THREE.PlaneGeometry(4, 4), floorMaterial);
+    floor.rotation.x = -Math.PI / 2;
+    floor.receiveShadow = true;
+    fallbackGroup.add(floor);
+
+    const wallGeometry = new THREE.PlaneGeometry(4, 2.5);
+
+    const backWall = new THREE.Mesh(wallGeometry, wallMaterial);
+    backWall.position.set(0, 1.25, -2);
+    fallbackGroup.add(backWall);
+
+    const frontWall = new THREE.Mesh(wallGeometry, wallMaterial);
+    frontWall.rotation.y = Math.PI;
+    frontWall.position.set(0, 1.25, 2);
+    fallbackGroup.add(frontWall);
+
+    const sideWallLeft = new THREE.Mesh(wallGeometry, wallMaterial);
+    sideWallLeft.rotation.y = Math.PI / 2;
+    sideWallLeft.position.set(-2, 1.25, 0);
+    fallbackGroup.add(sideWallLeft);
+
+    const sideWallRight = new THREE.Mesh(wallGeometry, wallMaterial);
+    sideWallRight.rotation.y = -Math.PI / 2;
+    sideWallRight.position.set(2, 1.25, 0);
+    fallbackGroup.add(sideWallRight);
+
+    const pillarGeometry = new THREE.CylinderGeometry(0.1, 0.1, 2.5, 12);
+    const pillarMaterial = new THREE.MeshStandardMaterial({ color: 0x999999, metalness: 0.1, roughness: 0.6 });
+
+    const pillarPositions = [
+      [-1.5, 1.25, -1.5],
+      [1.5, 1.25, -1.5],
+      [-1.5, 1.25, 1.5],
+      [1.5, 1.25, 1.5],
+    ];
+
+    pillarPositions.forEach(([x, y, z]) => {
+      const pillar = new THREE.Mesh(pillarGeometry, pillarMaterial);
+      pillar.position.set(x, y, z);
+      fallbackGroup.add(pillar);
     });
-    const floorMesh = new THREE.Mesh(floorGeometry, floorMaterial);
-    floorMesh.rotation.x = -Math.PI / 2;
-    floorMesh.name = 'fallback-floor';
-    fallbackGroup.add(floorMesh);
 
-    const frameGeometry = new THREE.BoxGeometry(baseRadius * 1.5, baseRadius * 0.75, baseRadius * 1.5);
-    const frameEdges = new THREE.EdgesGeometry(frameGeometry);
-    const frameMaterial = new THREE.LineBasicMaterial({
-      color: 0x818cf8,
-      linewidth: 1,
-    });
-    const frame = new THREE.LineSegments(frameEdges, frameMaterial);
-    frame.position.y = (baseRadius * 0.75) / 2;
-    frame.name = 'fallback-frame';
-    fallbackGroup.add(frame);
+    const fallbackGltf = { scene: fallbackGroup };
+    this.onLoad(fallbackGltf);
+  }
 
-    if (space && space.space_data && Array.isArray(space.space_data.nodes) && space.space_data.nodes.length) {
-      const nodeGroup = new THREE.Group();
-      nodeGroup.name = 'fallback-nodes';
+  onLoad(gltf) {
 
-      const positions = space.space_data.nodes.map((node) => new THREE.Vector3(
-        node.position.x,
-        node.position.y,
-        node.position.z,
-      ));
+    const { app, scene, space } = Store.getState();
 
-      const center = new THREE.Vector3();
-      positions.forEach((pos) => center.add(pos));
-      center.divideScalar(positions.length);
+    // save gltf to class for future use
+    this.gltf = gltf;
 
-      let maxDistance = 1;
-      positions.forEach((pos) => {
-        const distance = pos.distanceTo(center);
-        if (distance > maxDistance) {
-          maxDistance = distance;
-        }
-      });
+    const dollhouseSettings = space.space_data.sceneSettings.dollhouse;
 
-      const scaleFactor = maxDistance > 0 ? (baseRadius * 0.6) / maxDistance : 1;
+    // Environment orientation
+    const position = new THREE.Vector3(dollhouseSettings.offsetPosition.x, dollhouseSettings.offsetPosition.y, dollhouseSettings.offsetPosition.z);
+    const rotation = new THREE.Euler(
+        dollhouseSettings.offsetRotation.x, 
+        dollhouseSettings.offsetRotation.y, 
+        dollhouseSettings.offsetRotation.z
+      );
+    const scale = dollhouseSettings.scale;
 
-      const nodeGeometry = new THREE.SphereGeometry(0.6, 16, 16);
-      const nodeMaterial = new THREE.MeshStandardMaterial({
+    // Apply position, rotation, and scale to the gltf scene
+    gltf.scene.position.copy(position);
+    gltf.scene.rotation.copy(rotation);
+
+    if (typeof scale === 'number') {
+      gltf.scene.scale.set(scale, scale, scale); // Uniform scale
+    } else if (scale instanceof THREE.Vector3) {
         color: 0xfbbf24,
         emissive: 0xf59e0b,
         emissiveIntensity: 0.45,

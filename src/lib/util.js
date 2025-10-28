@@ -172,8 +172,12 @@ export const getInitialCameraPosition = (data, initialNode=null, initialRotation
 
 
 export const useCachedTexture = (uuid, faceI, res = "1024", version=null, onTextureLoaded=null) => {
-  const { textures, loadingManager } = Store.getState();
-  const url = getTextureUrl(uuid, faceI, res, version);
+  const { textures, loadingManager, space } = Store.getState();
+  const placeholderUrl = '/static/textures/placeholder-face0.png';
+
+  const node = space?.space_data?.nodes?.find(node => node.uuid === uuid);
+  const faceUrls = node?.cubeMapFaces;
+  const requestedUrl = faceUrls?.[faceI] || getTextureUrl(uuid, faceI, res, version);
 
   const textureLoader = new THREE.TextureLoader(loadingManager);
 
@@ -182,18 +186,50 @@ export const useCachedTexture = (uuid, faceI, res = "1024", version=null, onText
     return null;
   }
 
-  if (!textures[url]) {
-    textures[url] = textureLoader.load(url, (tex) => {
-      applyTextureSettings(tex);
+  if (!textures[requestedUrl]) {
+    const texture = textureLoader.load(
+      requestedUrl,
+      (tex) => {
+        applyTextureSettings(tex);
 
-      // handle callback if necessary
-      if (onTextureLoaded) {
-        onTextureLoaded(uuid, faceI, tex);
+        if (onTextureLoaded) {
+          onTextureLoaded(uuid, faceI, tex);
+        }
+      },
+      undefined,
+      (error) => {
+        const message = faceUrls?.[faceI]
+          ? `Failed to load custom cube face texture for ${uuid} face ${faceI} from ${requestedUrl}`
+          : `Failed to load remote texture for ${uuid} face ${faceI} from ${requestedUrl}`;
+        console.warn(`${message}. Falling back to ${placeholderUrl}.`, error);
+
+        textureLoader.load(
+          placeholderUrl,
+          (fallbackTex) => {
+            texture.image = fallbackTex.image;
+            texture.needsUpdate = true;
+            texture.flipY = fallbackTex.flipY;
+            texture.wrapS = fallbackTex.wrapS;
+            texture.wrapT = fallbackTex.wrapT;
+            texture.colorSpace = fallbackTex.colorSpace;
+            applyTextureSettings(texture);
+
+            if (onTextureLoaded) {
+              onTextureLoaded(uuid, faceI, texture);
+            }
+          },
+          undefined,
+          (fallbackError) => {
+            console.error(`Failed to load fallback texture from ${placeholderUrl}`, fallbackError);
+          }
+        );
       }
-    }) 
+    );
+
+    textures[requestedUrl] = texture;
   }
 
-  return textures[url];
+  return textures[requestedUrl];
 };
 
 const applyTextureSettings = (texture) => {
@@ -219,12 +255,3 @@ export const getTextureUrl = (uuid, faceI, resolution="1024", version=null) => {
   }
 
   if (resolution === "4096") {
-    return `https://static.mused.org/spaceshare/${uuid}_face${faceI}${versionPart}.jpg`;
-  }
-
-  if (resolution === "1024") {
-    return `https://static.mused.org/spaceshare/${uuid}_face${faceI}${versionPart}_1024.jpg`;
-  }
-
-  return `https://iiif.mused.org/spaceshare/${uuid}_face${faceI}${versionPart}.jpg/full/${_res}/0/default.jpg`
-}
