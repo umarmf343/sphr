@@ -2,7 +2,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const BundleTracker = require("webpack-bundle-tracker");
-const _template = require('lodash.template');
 const fs = require('fs');
 const path = require('path')
 const webpack = require('webpack');
