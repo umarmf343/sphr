@@ -3,286 +3,209 @@
   "assets": {
     ".gitkeep": {
       "name": ".gitkeep",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\.gitkeep",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/.gitkeep"
+      "path": "/workspace/static/webpack_bundles/.gitkeep"
     },
     "android-chrome-192x192.png": {
       "name": "android-chrome-192x192.png",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\android-chrome-192x192.png",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/android-chrome-192x192.png"
+      "path": "/workspace/static/webpack_bundles/android-chrome-192x192.png"
     },
     "android-chrome-512x512.png": {
       "name": "android-chrome-512x512.png",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\android-chrome-512x512.png",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/android-chrome-512x512.png"
+      "path": "/workspace/static/webpack_bundles/android-chrome-512x512.png"
     },
     "apple-touch-icon.png": {
       "name": "apple-touch-icon.png",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\apple-touch-icon.png",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/apple-touch-icon.png"
+      "path": "/workspace/static/webpack_bundles/apple-touch-icon.png"
     },
-    "bundle.38c46a54a09b1da779dc.js": {
-      "name": "bundle.38c46a54a09b1da779dc.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.38c46a54a09b1da779dc.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/bundle.38c46a54a09b1da779dc.js"
+    "bundle.fac2bfae39415b5896b2.js": {
+      "name": "bundle.fac2bfae39415b5896b2.js",
+      "path": "/workspace/static/webpack_bundles/bundle.fac2bfae39415b5896b2.js"
     },
-    "bundle.38c46a54a09b1da779dc.js.map": {
-      "name": "bundle.38c46a54a09b1da779dc.js.map",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.38c46a54a09b1da779dc.js.map",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/bundle.38c46a54a09b1da779dc.js.map"
+    "bundle.fac2bfae39415b5896b2.js.LICENSE.txt": {
+      "name": "bundle.fac2bfae39415b5896b2.js.LICENSE.txt",
+      "path": "/workspace/static/webpack_bundles/bundle.fac2bfae39415b5896b2.js.LICENSE.txt"
     },
-    "bundle.5a48d86ef9c13409df9a.js": {
-      "name": "bundle.5a48d86ef9c13409df9a.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.5a48d86ef9c13409df9a.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/bundle.5a48d86ef9c13409df9a.js"
-    },
-    "bundle.5a48d86ef9c13409df9a.js.map": {
-      "name": "bundle.5a48d86ef9c13409df9a.js.map",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.5a48d86ef9c13409df9a.js.map",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/bundle.5a48d86ef9c13409df9a.js.map"
+    "bundle.fac2bfae39415b5896b2.js.map": {
+      "name": "bundle.fac2bfae39415b5896b2.js.map",
+      "path": "/workspace/static/webpack_bundles/bundle.fac2bfae39415b5896b2.js.map"
     },
     "copy_locale_data.sh": {
       "name": "copy_locale_data.sh",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\copy_locale_data.sh",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/copy_locale_data.sh"
+      "path": "/workspace/static/webpack_bundles/copy_locale_data.sh"
     },
     "favicon-16x16.png": {
       "name": "favicon-16x16.png",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\favicon-16x16.png",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/favicon-16x16.png"
+      "path": "/workspace/static/webpack_bundles/favicon-16x16.png"
     },
     "favicon-32x32.png": {
       "name": "favicon-32x32.png",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\favicon-32x32.png",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/favicon-32x32.png"
+      "path": "/workspace/static/webpack_bundles/favicon-32x32.png"
     },
     "favicon.ico": {
       "name": "favicon.ico",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\favicon.ico",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/favicon.ico"
+      "path": "/workspace/static/webpack_bundles/favicon.ico"
+    },
+    "index.html": {
+      "name": "index.html",
+      "path": "/workspace/static/webpack_bundles/index.html"
     },
     "locales/ar/index.js": {
       "name": "locales/ar/index.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\ar\\index.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/ar/index.js"
+      "path": "/workspace/static/webpack_bundles/locales/ar/index.js"
     },
     "locales/ar/ui.json": {
       "name": "locales/ar/ui.json",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\ar\\ui.json",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/ar/ui.json"
+      "path": "/workspace/static/webpack_bundles/locales/ar/ui.json"
     },
     "locales/bn/index.js": {
       "name": "locales/bn/index.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\bn\\index.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/bn/index.js"
+      "path": "/workspace/static/webpack_bundles/locales/bn/index.js"
     },
     "locales/bn/ui.json": {
       "name": "locales/bn/ui.json",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\bn\\ui.json",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/bn/ui.json"
+      "path": "/workspace/static/webpack_bundles/locales/bn/ui.json"
     },
     "locales/de/index.js": {
       "name": "locales/de/index.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\de\\index.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/de/index.js"
+      "path": "/workspace/static/webpack_bundles/locales/de/index.js"
     },
     "locales/de/ui.json": {
       "name": "locales/de/ui.json",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\de\\ui.json",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/de/ui.json"
+      "path": "/workspace/static/webpack_bundles/locales/de/ui.json"
     },
     "locales/el/index.js": {
       "name": "locales/el/index.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\el\\index.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/el/index.js"
+      "path": "/workspace/static/webpack_bundles/locales/el/index.js"
     },
     "locales/el/ui.json": {
       "name": "locales/el/ui.json",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\el\\ui.json",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/el/ui.json"
+      "path": "/workspace/static/webpack_bundles/locales/el/ui.json"
     },
     "locales/en/index.js": {
       "name": "locales/en/index.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\en\\index.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/en/index.js"
+      "path": "/workspace/static/webpack_bundles/locales/en/index.js"
     },
     "locales/en/ui.json": {
       "name": "locales/en/ui.json",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\en\\ui.json",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/en/ui.json"
+      "path": "/workspace/static/webpack_bundles/locales/en/ui.json"
     },
     "locales/es/index.js": {
       "name": "locales/es/index.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\es\\index.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/es/index.js"
+      "path": "/workspace/static/webpack_bundles/locales/es/index.js"
     },
     "locales/es/ui.json": {
       "name": "locales/es/ui.json",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\es\\ui.json",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/es/ui.json"
+      "path": "/workspace/static/webpack_bundles/locales/es/ui.json"
     },
     "locales/fr/index.js": {
       "name": "locales/fr/index.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\fr\\index.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/fr/index.js"
+      "path": "/workspace/static/webpack_bundles/locales/fr/index.js"
     },
     "locales/fr/ui.json": {
       "name": "locales/fr/ui.json",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\fr\\ui.json",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/fr/ui.json"
+      "path": "/workspace/static/webpack_bundles/locales/fr/ui.json"
     },
     "locales/hi/index.js": {
       "name": "locales/hi/index.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\hi\\index.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/hi/index.js"
+      "path": "/workspace/static/webpack_bundles/locales/hi/index.js"
     },
     "locales/hi/ui.json": {
       "name": "locales/hi/ui.json",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\hi\\ui.json",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/hi/ui.json"
+      "path": "/workspace/static/webpack_bundles/locales/hi/ui.json"
     },
     "locales/id/index.js": {
       "name": "locales/id/index.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\id\\index.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/id/index.js"
+      "path": "/workspace/static/webpack_bundles/locales/id/index.js"
     },
     "locales/id/ui.json": {
       "name": "locales/id/ui.json",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\id\\ui.json",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/id/ui.json"
+      "path": "/workspace/static/webpack_bundles/locales/id/ui.json"
     },
     "locales/index.js": {
       "name": "locales/index.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\index.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/index.js"
+      "path": "/workspace/static/webpack_bundles/locales/index.js"
     },
     "locales/it/index.js": {
       "name": "locales/it/index.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\it\\index.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/it/index.js"
+      "path": "/workspace/static/webpack_bundles/locales/it/index.js"
     },
     "locales/it/ui.json": {
       "name": "locales/it/ui.json",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\it\\ui.json",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/it/ui.json"
+      "path": "/workspace/static/webpack_bundles/locales/it/ui.json"
     },
     "locales/ja/index.js": {
       "name": "locales/ja/index.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\ja\\index.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/ja/index.js"
+      "path": "/workspace/static/webpack_bundles/locales/ja/index.js"
     },
     "locales/ja/ui.json": {
       "name": "locales/ja/ui.json",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\ja\\ui.json",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/ja/ui.json"
+      "path": "/workspace/static/webpack_bundles/locales/ja/ui.json"
     },
     "locales/ko/index.js": {
       "name": "locales/ko/index.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\ko\\index.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/ko/index.js"
+      "path": "/workspace/static/webpack_bundles/locales/ko/index.js"
     },
     "locales/ko/ui.json": {
       "name": "locales/ko/ui.json",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\ko\\ui.json",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/ko/ui.json"
+      "path": "/workspace/static/webpack_bundles/locales/ko/ui.json"
     },
     "locales/pt/index.js": {
       "name": "locales/pt/index.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\pt\\index.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/pt/index.js"
+      "path": "/workspace/static/webpack_bundles/locales/pt/index.js"
     },
     "locales/pt/ui.json": {
       "name": "locales/pt/ui.json",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\pt\\ui.json",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/pt/ui.json"
+      "path": "/workspace/static/webpack_bundles/locales/pt/ui.json"
     },
     "locales/ru/index.js": {
       "name": "locales/ru/index.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\ru\\index.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/ru/index.js"
+      "path": "/workspace/static/webpack_bundles/locales/ru/index.js"
     },
     "locales/ru/ui.json": {
       "name": "locales/ru/ui.json",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\ru\\ui.json",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/ru/ui.json"
+      "path": "/workspace/static/webpack_bundles/locales/ru/ui.json"
     },
     "locales/tr/index.js": {
       "name": "locales/tr/index.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\tr\\index.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/tr/index.js"
+      "path": "/workspace/static/webpack_bundles/locales/tr/index.js"
     },
     "locales/tr/ui.json": {
       "name": "locales/tr/ui.json",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\tr\\ui.json",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/tr/ui.json"
+      "path": "/workspace/static/webpack_bundles/locales/tr/ui.json"
     },
     "locales/zh-hans/index.js": {
       "name": "locales/zh-hans/index.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\zh-hans\\index.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/zh-hans/index.js"
+      "path": "/workspace/static/webpack_bundles/locales/zh-hans/index.js"
     },
     "locales/zh-hans/ui.json": {
       "name": "locales/zh-hans/ui.json",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\zh-hans\\ui.json",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/locales/zh-hans/ui.json"
-    },
-    "main.1bfd352030bcdd3cbf85.hot-update.js": {
-      "name": "main.1bfd352030bcdd3cbf85.hot-update.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.1bfd352030bcdd3cbf85.hot-update.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/main.1bfd352030bcdd3cbf85.hot-update.js"
-    },
-    "main.1bfd352030bcdd3cbf85.hot-update.js.map": {
-      "name": "main.1bfd352030bcdd3cbf85.hot-update.js.map",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.1bfd352030bcdd3cbf85.hot-update.js.map",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/main.1bfd352030bcdd3cbf85.hot-update.js.map"
-    },
-    "main.1bfd352030bcdd3cbf85.hot-update.json": {
-      "name": "main.1bfd352030bcdd3cbf85.hot-update.json",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.1bfd352030bcdd3cbf85.hot-update.json",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/main.1bfd352030bcdd3cbf85.hot-update.json"
+      "path": "/workspace/static/webpack_bundles/locales/zh-hans/ui.json"
     },
     "main.css": {
       "name": "main.css",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.css",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/main.css"
+      "path": "/workspace/static/webpack_bundles/main.css"
     },
     "main.css.map": {
       "name": "main.css.map",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.css.map",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/main.css.map"
+      "path": "/workspace/static/webpack_bundles/main.css.map"
     },
     "site.webmanifest": {
       "name": "site.webmanifest",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\site.webmanifest",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/site.webmanifest"
+      "path": "/workspace/static/webpack_bundles/site.webmanifest"
     },
-    "styles/main.aced47a3da5b88207b94.css": {
-      "name": "styles/main.aced47a3da5b88207b94.css",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\styles\\main.aced47a3da5b88207b94.css",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/styles/main.aced47a3da5b88207b94.css"
+    "styles/main.780a6680833818ed1ef5.css": {
+      "name": "styles/main.780a6680833818ed1ef5.css",
+      "path": "/workspace/static/webpack_bundles/styles/main.780a6680833818ed1ef5.css"
     },
-    "styles/main.aced47a3da5b88207b94.css.map": {
-      "name": "styles/main.aced47a3da5b88207b94.css.map",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\styles\\main.aced47a3da5b88207b94.css.map",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/styles/main.aced47a3da5b88207b94.css.map"
-    },
-    "styles/main.c57b918f149fa0723e25.css": {
-      "name": "styles/main.c57b918f149fa0723e25.css",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\styles\\main.c57b918f149fa0723e25.css",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/styles/main.c57b918f149fa0723e25.css"
-    },
-    "styles/main.c57b918f149fa0723e25.css.map": {
-      "name": "styles/main.c57b918f149fa0723e25.css.map",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\styles\\main.c57b918f149fa0723e25.css.map",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/styles/main.c57b918f149fa0723e25.css.map"
+    "styles/main.780a6680833818ed1ef5.css.map": {
+      "name": "styles/main.780a6680833818ed1ef5.css.map",
+      "path": "/workspace/static/webpack_bundles/styles/main.780a6680833818ed1ef5.css.map"
     }
   },
   "chunks": {
     "main": [
-      "styles/main.aced47a3da5b88207b94.css",
-      "bundle.38c46a54a09b1da779dc.js",
-      "main.1bfd352030bcdd3cbf85.hot-update.js"
+      "styles/main.780a6680833818ed1ef5.css",
+      "bundle.fac2bfae39415b5896b2.js"
     ]
-  },
-  "publicPath": "http://localhost:3000/static/webpack_bundles/"
+  }
 }
