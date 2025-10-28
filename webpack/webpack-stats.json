@@ -26,35 +26,15 @@
       "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\apple-touch-icon.png",
       "publicPath": "http://localhost:3000/static/webpack_bundles/apple-touch-icon.png"
     },
-    "bundle.8942ffbdf2f523e1d19d.js": {
-      "name": "bundle.8942ffbdf2f523e1d19d.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.8942ffbdf2f523e1d19d.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/bundle.8942ffbdf2f523e1d19d.js"
+    "bundle.d848d3f0b4931232033b.js": {
+      "name": "bundle.d848d3f0b4931232033b.js",
+      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.d848d3f0b4931232033b.js",
+      "publicPath": "http://localhost:3000/static/webpack_bundles/bundle.d848d3f0b4931232033b.js"
     },
-    "bundle.8942ffbdf2f523e1d19d.js.map": {
-      "name": "bundle.8942ffbdf2f523e1d19d.js.map",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.8942ffbdf2f523e1d19d.js.map",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/bundle.8942ffbdf2f523e1d19d.js.map"
-    },
-    "bundle.d98ea663f91349661efb.js": {
-      "name": "bundle.d98ea663f91349661efb.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.d98ea663f91349661efb.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/bundle.d98ea663f91349661efb.js"
-    },
-    "bundle.d98ea663f91349661efb.js.map": {
-      "name": "bundle.d98ea663f91349661efb.js.map",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.d98ea663f91349661efb.js.map",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/bundle.d98ea663f91349661efb.js.map"
-    },
-    "bundle.dfcb125ea140fcb018ec.js": {
-      "name": "bundle.dfcb125ea140fcb018ec.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.dfcb125ea140fcb018ec.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/bundle.dfcb125ea140fcb018ec.js"
-    },
-    "bundle.dfcb125ea140fcb018ec.js.map": {
-      "name": "bundle.dfcb125ea140fcb018ec.js.map",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.dfcb125ea140fcb018ec.js.map",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/bundle.dfcb125ea140fcb018ec.js.map"
+    "bundle.d848d3f0b4931232033b.js.map": {
+      "name": "bundle.d848d3f0b4931232033b.js.map",
+      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.d848d3f0b4931232033b.js.map",
+      "publicPath": "http://localhost:3000/static/webpack_bundles/bundle.d848d3f0b4931232033b.js.map"
     },
     "copy_locale_data.sh": {
       "name": "copy_locale_data.sh",
@@ -246,36 +226,6 @@
       "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\zh-hans\\ui.json",
       "publicPath": "http://localhost:3000/static/webpack_bundles/locales/zh-hans/ui.json"
     },
-    "main.20d01dd663f87482f476.hot-update.js": {
-      "name": "main.20d01dd663f87482f476.hot-update.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.20d01dd663f87482f476.hot-update.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/main.20d01dd663f87482f476.hot-update.js"
-    },
-    "main.20d01dd663f87482f476.hot-update.js.map": {
-      "name": "main.20d01dd663f87482f476.hot-update.js.map",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.20d01dd663f87482f476.hot-update.js.map",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/main.20d01dd663f87482f476.hot-update.js.map"
-    },
-    "main.20d01dd663f87482f476.hot-update.json": {
-      "name": "main.20d01dd663f87482f476.hot-update.json",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.20d01dd663f87482f476.hot-update.json",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/main.20d01dd663f87482f476.hot-update.json"
-    },
-    "main.50e668159ebb9c67456f.hot-update.js": {
-      "name": "main.50e668159ebb9c67456f.hot-update.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.50e668159ebb9c67456f.hot-update.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/main.50e668159ebb9c67456f.hot-update.js"
-    },
-    "main.50e668159ebb9c67456f.hot-update.js.map": {
-      "name": "main.50e668159ebb9c67456f.hot-update.js.map",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.50e668159ebb9c67456f.hot-update.js.map",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/main.50e668159ebb9c67456f.hot-update.js.map"
-    },
-    "main.50e668159ebb9c67456f.hot-update.json": {
-      "name": "main.50e668159ebb9c67456f.hot-update.json",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.50e668159ebb9c67456f.hot-update.json",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/main.50e668159ebb9c67456f.hot-update.json"
-    },
     "main.css": {
       "name": "main.css",
       "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.css",
@@ -305,8 +255,7 @@
   "chunks": {
     "main": [
       "styles/main.6e5cde0a535a2f94274e.css",
-      "bundle.8942ffbdf2f523e1d19d.js",
-      "main.50e668159ebb9c67456f.hot-update.js"
+      "bundle.d848d3f0b4931232033b.js"
     ]
   },
   "publicPath": "http://localhost:3000/static/webpack_bundles/"
