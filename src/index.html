@@ -1,217 +1,136 @@
++178
+-0
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SPHR Demo</title>
   </head>
   <body class="bg-theme-900 text-white font-sans">
-    <canvas class="webgl"></canvas>
-    <div id="app" class="relative min-h-screen w-full overflow-hidden">
-      <div
-        id="loading-screen"
-        class="pointer-events-auto absolute inset-0 z-50 flex flex-col items-center justify-center gap-8 bg-theme-900/95 px-6 text-center"
-      >
-        <div id="loading-canvas" class="h-64 w-full max-w-4xl"></div>
-        <div id="title-outer" class="space-y-3">
-          <h1 id="loading-title" class="text-3xl font-serif uppercase tracking-[0.35em]">
-            Loading space
-          </h1>
-          <h2 id="loading-title2" class="text-base uppercase tracking-[0.5em] text-theme-100">
-            Preparing artifacts
-          </h2>
-          <p id="loading-subtitle" class="text-xs uppercase tracking-[0.5em] text-theme-500">
-            This demo ships with lightweight placeholder assets so you can explore the UI.
-          </p>
+    <canvas class="webgl" aria-hidden="true"></canvas>
+
+    <div id="loading-screen" class="fixed inset-0 flex flex-col justify-between pointer-events-none">
+      <div id="title-outer" class="p-6 text-center pointer-events-auto">
+        <h1 id="loading-title" class="text-2xl font-serif">Loading experience</h1>
+        <h2 id="loading-title2" class="text-lg opacity-80"></h2>
+        <p id="loading-subtitle" class="mt-2 text-sm opacity-70"></p>
+      </div>
+      <div id="loading-canvas" class="flex-1 pointer-events-auto"></div>
+      <div class="p-6 space-y-4 pointer-events-auto">
+        <div id="loading-text-notification" class="text-center text-sm tracking-widest uppercase">
+          <span id="loading-text-notification-percent">0%</span>
         </div>
-        <div id="loading-text-notification" class="text-xs uppercase tracking-[0.6em] text-theme-100">
-          Loading <span id="loading-text-notification-percent">0%</span>
-        </div>
-        <div id="loading-action-buttons" class="flex gap-4 text-xs uppercase tracking-[0.5em]">
-          <button
-            id="loading-audio-on-button"
-            class="rounded-full border border-theme-100 px-6 py-2 text-theme-100 hover:bg-theme-800"
-          >
-            Audio on
-          </button>
-          <button
-            id="loading-audio-mute-button"
-            class="rounded-full border border-theme-100 px-6 py-2 text-theme-100 hover:bg-theme-800"
-          >
-            Mute
-          </button>
+        <div id="loading-action-buttons" class="flex items-center justify-center gap-4">
+          <button id="loading-audio-on-button" class="tour-action-button" type="button">Enable audio</button>
+          <button id="loading-audio-mute-button" class="tour-action-button" type="button">Mute audio</button>
         </div>
       </div>
-
-      <div id="hud-container" class="pointer-events-none absolute inset-0 z-30">
-        <div class="pointer-events-auto absolute left-1/2 top-6 flex -translate-x-1/2 gap-3">
-          <button
-            id="view-mode-button"
-            class="flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-5 py-2 text-xs uppercase tracking-[0.45em] text-white hover:bg-black/40"
-          >
-            <span id="view-mode-fpv-icon" class="flex items-center gap-1">
-              <span class="inline-block h-2 w-2 rounded-full bg-theme-100"></span>
-              FPV
-            </span>
-            <span id="view-mode-orbit-icon" class="hidden items-center gap-1">
-              <span class="inline-block h-2 w-2 rounded-full bg-theme-100"></span>
-              Orbit
-            </span>
-          </button>
-          <button
-            id="full-screen-button"
-            class="flex items-center justify-center rounded-full border border-white/20 bg-black/30 p-3 text-white hover:bg-black/40"
-          >
-            <span id="full-screen-on" aria-hidden="true">⛶</span>
-            <span id="full-screen-off" aria-hidden="true" class="hidden">🡼</span>
-          </button>
-          <button
-            id="audio-on-button"
-            class="hidden items-center justify-center rounded-full border border-white/20 bg-black/30 px-4 py-2 text-xs uppercase tracking-[0.45em] text-white hover:bg-black/40"
-          >
-            Audio
-          </button>
-          <button
-            id="audio-mute-button"
-            class="hidden items-center justify-center rounded-full border border-white/20 bg-black/30 px-4 py-2 text-xs uppercase tracking-[0.45em] text-white hover:bg-black/40"
-          >
-            Mute
-          </button>
-          <button
-            id="guide-toggle-button"
-            class="hidden items-center justify-center rounded-full border border-white/20 bg-black/30 px-4 py-2 text-xs uppercase tracking-[0.45em] text-white hover:bg-black/40"
-          >
-            Guide
-          </button>
-          <button
-            id="free-explore-toggle-button"
-            class="hidden items-center justify-center rounded-full border border-white/20 bg-black/30 px-4 py-2 text-xs uppercase tracking-[0.45em] text-white hover:bg-black/40"
-          >
-            Explore
-          </button>
-        </div>
-
-        <div id="tour-ui" class="pointer-events-auto absolute inset-x-0 bottom-0 hidden flex-col gap-6 px-6 pb-10 sm:px-12">
-          <div
-            id="tour-ui-display"
-            class="relative w-full rounded-3xl bg-gradient-to-t from-black/70 via-black/40 to-transparent p-6 text-left sm:w-1/2 sm:bg-gradient-to-r"
-          >
-            <div id="tour-ui-content" class="flex max-w-xl flex-col gap-6 text-white">
-              <div id="tour-point-text" class="space-y-4 text-shadow">
-                <div id="tour-point-text-main" class="space-y-4">
-                  <p>
-                    SPHR loads immersive 360º imagery and lightweight 3D assets to power guided tours. The sample data
-                    embedded in this template mirrors the structure used in production deployments.
-                  </p>
-                </div>
-                <div id="tour-point-text-secondary" class="text-sm opacity-80"></div>
-              </div>
-              <div id="tour-photograph-container" class="hidden"></div>
-            </div>
-          </div>
-
-          <div id="tour-ui-buttons" class="flex flex-col items-center gap-6 text-xs uppercase tracking-[0.45em] sm:flex-row sm:justify-between">
-            <div class="flex items-center gap-4">
-              <label class="flex items-center gap-2">
-                <input id="autoplay" type="checkbox" class="h-4 w-4 rounded border-theme-100 bg-transparent" />
-                <span>Autoplay</span>
-              </label>
-              <label class="flex items-center gap-2">
-                <input id="words" type="checkbox" class="h-4 w-4 rounded border-theme-100 bg-transparent" checked />
-                <span>Show text</span>
-              </label>
-            </div>
-            <div class="flex items-center gap-4">
-              <button
-                id="prev-button"
-                class="rounded-full border border-theme-100 px-6 py-3 text-white opacity-80 transition hover:opacity-100"
-              >
-                Prev
-              </button>
-              <button
-                id="next-button"
-                class="rounded-full border border-theme-100 px-6 py-3 text-white opacity-80 transition hover:opacity-100"
-              >
-                Next
-              </button>
-            </div>
-          </div>
-
-          <div
-            id="tour-ui-navpoint"
-            class="pointer-events-auto self-center text-xs uppercase tracking-[0.45em] text-white opacity-90 transition-opacity duration-500"
-          >
-            Navigation
-          </div>
-        </div>
-      </div>
-
-      <div id="node-loading-screen" class="pointer-events-none absolute inset-0 hidden bg-theme-900/80"></div>
-      <div id="maps-attribution" class="pointer-events-none absolute bottom-4 right-6 text-[10px] uppercase tracking-[0.5em] text-theme-100"></div>
-      <video id="narrator" class="hidden" crossorigin="anonymous"></video>
-      <iframe id="mp-showcase" class="hidden h-full w-full border-0" title="Matterport experience"></iframe>
     </div>
 
-    <div id="debug-container" class="pointer-events-none fixed bottom-4 left-4 z-50 max-w-xs text-left text-xs"></div>
+    <div id="hud-container" class="pointer-events-none">
+      <div class="absolute inset-x-0 bottom-0 p-6 flex flex-col gap-4 pointer-events-auto">
+        <div id="tour-ui" class="hidden flex flex-col gap-4">
+          <div id="tour-ui-buttons" class="flex flex-wrap gap-3 justify-center">
+            <button id="prev-button" class="tour-action-button" type="button">Previous</button>
+            <button id="next-button" class="tour-action-button" type="button">Next</button>
+            <button id="view-mode-button" class="tour-action-button flex items-center gap-2" type="button">
+              <span id="view-mode-fpv-icon">FPV</span>
+              <span id="view-mode-orbit-icon" class="hidden">Orbit</span>
+            </button>
+            <button id="full-screen-button" class="tour-action-button flex items-center gap-2" type="button">
+              <span id="full-screen-on">Fullscreen</span>
+              <span id="full-screen-off" class="hidden">Exit</span>
+            </button>
+            <button id="audio-on-button" class="tour-action-button" type="button">🔊</button>
+            <button id="audio-mute-button" class="tour-action-button hidden" type="button">🔇</button>
+            <button id="guide-toggle-button" class="tour-action-button" type="button">Guide</button>
+            <button id="free-explore-toggle-button" class="tour-action-button" type="button">Explore</button>
+          </div>
 
-    <form id="space_edit_form" class="hidden">
-      <input type="hidden" id="space_data_nodes" name="space_data_nodes" />
+          <div id="tour-ui-display" class="relative mx-auto w-full max-w-3xl rounded-lg bg-black/30 p-4">
+            <div id="tour-ui-content" class="flex flex-col gap-3">
+              <div id="tour-point-text" class="space-y-2">
+                <div id="tour-point-text-main" class="space-y-2 text-base leading-relaxed"></div>
+                <div id="tour-point-text-secondary" class="text-sm opacity-80"></div>
+              </div>
+              <div id="tour-ui-navpoint" class="flex flex-wrap gap-4 text-sm">
+                <label class="flex items-center gap-2">
+                  <input id="autoplay" type="checkbox" checked />
+                  Autoplay narration
+                </label>
+                <label class="flex items-center gap-2">
+                  <input id="words" type="checkbox" checked />
+                  Show text overlay
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="debug-container" class="absolute top-4 left-4 text-xs bg-black/60 px-3 py-2 rounded pointer-events-auto"></div>
+    </div>
+
+    <div id="node-loading-screen" class="hidden"></div>
+    <div id="tour-photograph-container" class="hidden"></div>
+    <div id="maps-attribution" class="hidden"></div>
+
+    <video id="narrator" class="hidden" crossorigin="anonymous"></video>
+    <iframe id="mp-showcase" class="hidden"></iframe>
+
+    <form id="space_edit_form" class="hidden" method="post">
+      <input id="space_data_nodes" name="space_data_nodes" type="hidden" value="" />
     </form>
-    <form id="tour_edit_form" class="hidden">
-      <input type="hidden" id="tour_data_input" name="tour_data_input" />
+    <form id="tour_edit_form" class="hidden" method="post">
+      <input id="tour_data_input" name="tour_data" type="hidden" value="" />
     </form>
 
     <script id="space_data" type="application/json">
       {
-        "id": "demo-space",
+        "id": "2",
         "type": "spaces",
-        "title": "Demo Tomb of Nefertari",
-        "mesh": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/DamagedHelmet/glTF-Binary/DamagedHelmet.glb",
-        "version": "demo",
+        "title": "The Tomb of Nefertari",
+        "mesh": "https://static.mused.org/spaceshare/nefertari_tomb_dollhouse.glb",
         "space_data": {
           "nodes": [
             {
-              "uuid": "demo_node_1",
-              "image": "",
+              "uuid": "IMG_20231101_074927_00_479",
+              "image": "spaceshare/IMG_20231101_074927_00_479.jpg",
               "index": 0,
-              "position": { "x": 0, "y": 1.6, "z": 0 },
-              "rotation": { "x": 0, "y": 0, "z": 0 },
-              "resolution": "1024",
-              "floorPosition": { "x": 0, "y": 0, "z": 0 }
-            },
-            {
-              "uuid": "demo_node_2",
-              "image": "",
-              "index": 1,
-              "position": { "x": 2, "y": 1.6, "z": 1 },
-              "rotation": { "x": 0, "y": 1.57, "z": 0 },
-              "resolution": "1024",
-              "floorPosition": { "x": 2, "y": 0, "z": 1 }
+              "position": { "x": 64.41091673555964, "y": 11.991629130243957, "z": 3.7581584995137596 },
+              "rotation": { "x": -0.4679478281301798, "y": -1.5699190012618083, "z": -2.6941590536699116 },
+              "resolution": "4096",
+              "floorPosition": { "x": 64.41091673555965, "y": 6.678567170874559, "z": 3.7581584995137605 }
             }
           ],
-          "initialNode": "demo_node_1",
+          "initialNode": "IMG_20231101_074927_00_479",
           "sceneSettings": {
             "nodes": {
-              "scale": 1,
+              "scale": 0.26,
               "offsetPosition": { "x": 0, "y": 0, "z": 0 },
               "offsetRotation": { "x": 0, "y": 0, "z": 0 }
             },
             "dollhouse": {
-              "scale": 1,
-              "offsetPosition": { "x": 0, "y": 0, "z": 0 },
-              "offsetRotation": { "x": 0, "y": 0, "z": 0 }
+              "scale": 1.1,
+              "offsetPosition": { "x": 8.83, "y": 2.16, "z": 2.26 },
+              "offsetRotation": { "x": 0, "y": -0.22, "z": 0 }
             },
             "offsetPosition": { "x": 0, "y": 0, "z": 0 },
             "offsetRotation": { "x": 0, "y": 0, "z": 0 }
           },
-          "initialRotation": { "polar": -5, "azimuth": 35 }
+          "initialRotation": { "polar": -19.4, "azimuth": 44.86 }
         }
       }
     </script>
+
     <script id="tour_data" type="application/json">
       {
-        "id": "demo-tour",
         "tour_data": {
+          "title": "Guided tour of Nefertari",
+          "autoplay": false,
+          "defaultShowText": true,
           "audio": {
             "start": {
               "url": "https://static.mused.org/sounds/bassdrum_64k.mp3",
@@ -231,103 +150,32 @@
           },
           "spaces": [
             {
-              "id": "demo-space",
-              "url": "",
+              "id": "2",
               "type": "spaces",
-              "title": "Demo Tomb of Nefertari",
+              "title": "The Tomb of Nefertari, Valley of the Queens",
               "tourpoints": [
                 {
+                  "nodeUUID": "IMG_20231101_074927_00_479",
+                  "text": "Welcome to the tomb of Nefertari, Queen of Pharaoh Ramesses II.",
+                  "secondaryText": "Move around the chamber to explore the vivid wall paintings.",
                   "pan": "left",
-                  "text": "Welcome to the SPHR sample tour. Use the on-screen controls or your mouse to explore the reconstructed environment.",
-                  "zoom": 10,
+                  "zoom": 0,
                   "files": [],
                   "models": [],
                   "sounds": ["default"],
-                  "nodeUUID": "demo_node_1",
-                  "rotation": { "polar": -5, "azimuth": 35 },
+                  "rotation": { "polar": -2, "azimuth": 46 },
                   "viewMode": "FPV",
-                  "thumbnail": "",
                   "targetType": "NODE",
                   "annotations": [],
-                  "textPosition": "left",
-                  "secondaryText": null
-                },
-                {
-                  "pan": "right",
-                  "text": "This step mirrors how guided narratives advance between nodes and optionally display supporting media.",
-                  "zoom": 20,
-                  "files": [],
-                  "models": [],
-                  "sounds": ["default"],
-                  "nodeUUID": "demo_node_2",
-                  "rotation": { "polar": -8, "azimuth": -60 },
-                  "viewMode": "FPV",
-                  "thumbnail": "",
-                  "targetType": "NODE",
-                  "annotations": [],
-                  "textPosition": "center",
-                  "secondaryText": null
+                  "textPosition": "left"
                 }
               ]
             }
           ],
-          "autoplay": false,
-          "nextTour": "random",
           "sceneGraph": [],
-          "annotationGraph": [],
-          "defaultShowText": true
+          "annotationGraph": []
         }
       }
     </script>
-    <script id="ordered_spaces_data" type="application/json">
-      [
-        {
-          "id": "demo-space",
-          "type": "spaces",
-          "title": "Demo Tomb of Nefertari",
-          "mesh": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/DamagedHelmet/glTF-Binary/DamagedHelmet.glb",
-          "version": "demo",
-          "space_data": {
-            "nodes": [
-              {
-                "uuid": "demo_node_1",
-                "image": "",
-                "index": 0,
-                "position": { "x": 0, "y": 1.6, "z": 0 },
-                "rotation": { "x": 0, "y": 0, "z": 0 },
-                "resolution": "1024",
-                "floorPosition": { "x": 0, "y": 0, "z": 0 }
-              },
-              {
-                "uuid": "demo_node_2",
-                "image": "",
-                "index": 1,
-                "position": { "x": 2, "y": 1.6, "z": 1 },
-                "rotation": { "x": 0, "y": 1.57, "z": 0 },
-                "resolution": "1024",
-                "floorPosition": { "x": 2, "y": 0, "z": 1 }
-              }
-            ],
-            "initialNode": "demo_node_1",
-            "sceneSettings": {
-              "nodes": {
-                "scale": 1,
-                "offsetPosition": { "x": 0, "y": 0, "z": 0 },
-                "offsetRotation": { "x": 0, "y": 0, "z": 0 }
-              },
-              "dollhouse": {
-                "scale": 1,
-                "offsetPosition": { "x": 0, "y": 0, "z": 0 },
-                "offsetRotation": { "x": 0, "y": 0, "z": 0 }
-              },
-              "offsetPosition": { "x": 0, "y": 0, "z": 0 },
-              "offsetRotation": { "x": 0, "y": 0, "z": 0 }
-            },
-            "initialRotation": { "polar": -5, "azimuth": 35 }
-          }
-        }
-      ]
-    </script>
-    <script id="space_mesh" type="application/json">{"url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/DamagedHelmet/glTF-Binary/DamagedHelmet.glb"}</script>
   </body>
 </html>

@@ -28,6 +28,10 @@ module.exports = {
     devtool: 'source-map',
     plugins:
     [
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, '../src/index.html'),
+            filename: 'index.html',
+        }),
         new CopyWebpackPlugin({
             patterns: [
                 { from: path.resolve(__dirname, '../static') }
