@@ -20,7 +20,8 @@ module.exports = merge(
         {
             host: '0.0.0.0',
             allowedHosts: 'all',
-            port: 3000, 
+            port: 3000,
+            historyApiFallback: true,
             static: {
               directory: path.resolve(__dirname, "..", "static"),
               staticOptions: {},
