@@ -21,25 +21,15 @@
       "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\apple-touch-icon.png",
       "publicPath": "http://localhost:3000/static/webpack_bundles/apple-touch-icon.png"
     },
-    "bundle.38c46a54a09b1da779dc.js": {
-      "name": "bundle.38c46a54a09b1da779dc.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.38c46a54a09b1da779dc.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/bundle.38c46a54a09b1da779dc.js"
+    "bundle.aea18132c89d6994a91a.js": {
+      "name": "bundle.aea18132c89d6994a91a.js",
+      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.aea18132c89d6994a91a.js",
+      "publicPath": "http://localhost:3000/static/webpack_bundles/bundle.aea18132c89d6994a91a.js"
     },
-    "bundle.38c46a54a09b1da779dc.js.map": {
-      "name": "bundle.38c46a54a09b1da779dc.js.map",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.38c46a54a09b1da779dc.js.map",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/bundle.38c46a54a09b1da779dc.js.map"
-    },
-    "bundle.5a48d86ef9c13409df9a.js": {
-      "name": "bundle.5a48d86ef9c13409df9a.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.5a48d86ef9c13409df9a.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/bundle.5a48d86ef9c13409df9a.js"
-    },
-    "bundle.5a48d86ef9c13409df9a.js.map": {
-      "name": "bundle.5a48d86ef9c13409df9a.js.map",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.5a48d86ef9c13409df9a.js.map",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/bundle.5a48d86ef9c13409df9a.js.map"
+    "bundle.aea18132c89d6994a91a.js.map": {
+      "name": "bundle.aea18132c89d6994a91a.js.map",
+      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\bundle.aea18132c89d6994a91a.js.map",
+      "publicPath": "http://localhost:3000/static/webpack_bundles/bundle.aea18132c89d6994a91a.js.map"
     },
     "copy_locale_data.sh": {
       "name": "copy_locale_data.sh",
@@ -60,6 +50,11 @@
       "name": "favicon.ico",
       "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\favicon.ico",
       "publicPath": "http://localhost:3000/static/webpack_bundles/favicon.ico"
+    },
+    "index.html": {
+      "name": "index.html",
+      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\index.html",
+      "publicPath": "http://localhost:3000/static/webpack_bundles/index.html"
     },
     "locales/ar/index.js": {
       "name": "locales/ar/index.js",
@@ -226,21 +221,6 @@
       "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\locales\\zh-hans\\ui.json",
       "publicPath": "http://localhost:3000/static/webpack_bundles/locales/zh-hans/ui.json"
     },
-    "main.1bfd352030bcdd3cbf85.hot-update.js": {
-      "name": "main.1bfd352030bcdd3cbf85.hot-update.js",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.1bfd352030bcdd3cbf85.hot-update.js",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/main.1bfd352030bcdd3cbf85.hot-update.js"
-    },
-    "main.1bfd352030bcdd3cbf85.hot-update.js.map": {
-      "name": "main.1bfd352030bcdd3cbf85.hot-update.js.map",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.1bfd352030bcdd3cbf85.hot-update.js.map",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/main.1bfd352030bcdd3cbf85.hot-update.js.map"
-    },
-    "main.1bfd352030bcdd3cbf85.hot-update.json": {
-      "name": "main.1bfd352030bcdd3cbf85.hot-update.json",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.1bfd352030bcdd3cbf85.hot-update.json",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/main.1bfd352030bcdd3cbf85.hot-update.json"
-    },
     "main.css": {
       "name": "main.css",
       "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\main.css",
@@ -256,32 +236,21 @@
       "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\site.webmanifest",
       "publicPath": "http://localhost:3000/static/webpack_bundles/site.webmanifest"
     },
-    "styles/main.aced47a3da5b88207b94.css": {
-      "name": "styles/main.aced47a3da5b88207b94.css",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\styles\\main.aced47a3da5b88207b94.css",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/styles/main.aced47a3da5b88207b94.css"
+    "styles/main.8daef257316980b87638.css": {
+      "name": "styles/main.8daef257316980b87638.css",
+      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\styles\\main.8daef257316980b87638.css",
+      "publicPath": "http://localhost:3000/static/webpack_bundles/styles/main.8daef257316980b87638.css"
     },
-    "styles/main.aced47a3da5b88207b94.css.map": {
-      "name": "styles/main.aced47a3da5b88207b94.css.map",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\styles\\main.aced47a3da5b88207b94.css.map",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/styles/main.aced47a3da5b88207b94.css.map"
-    },
-    "styles/main.c57b918f149fa0723e25.css": {
-      "name": "styles/main.c57b918f149fa0723e25.css",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\styles\\main.c57b918f149fa0723e25.css",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/styles/main.c57b918f149fa0723e25.css"
-    },
-    "styles/main.c57b918f149fa0723e25.css.map": {
-      "name": "styles/main.c57b918f149fa0723e25.css.map",
-      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\styles\\main.c57b918f149fa0723e25.css.map",
-      "publicPath": "http://localhost:3000/static/webpack_bundles/styles/main.c57b918f149fa0723e25.css.map"
+    "styles/main.8daef257316980b87638.css.map": {
+      "name": "styles/main.8daef257316980b87638.css.map",
+      "path": "C:\\Users\\User\\Documents\\UMAR MF\\sphr\\static\\webpack_bundles\\styles\\main.8daef257316980b87638.css.map",
+      "publicPath": "http://localhost:3000/static/webpack_bundles/styles/main.8daef257316980b87638.css.map"
     }
   },
   "chunks": {
     "main": [
-      "styles/main.aced47a3da5b88207b94.css",
-      "bundle.38c46a54a09b1da779dc.js",
-      "main.1bfd352030bcdd3cbf85.hot-update.js"
+      "styles/main.8daef257316980b87638.css",
+      "bundle.aea18132c89d6994a91a.js"
     ]
   },
   "publicPath": "http://localhost:3000/static/webpack_bundles/"
