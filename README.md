@@ -251,6 +251,18 @@ LANG=es npm run build  # for Spanish
 3. Start development server: `npm run start`
 4. Build for production: `npm run build`
 
+## Preview
+
+To preview the demo experience locally:
+
+1. Run `npm run start`.
+2. Open [http://localhost:3000](http://localhost:3000) in your browser.
+3. When prompted, enable audio to hear the navigation cues used in the tour.
+
+The development server also serves static assets from `static/`, so any custom
+logos, manifest files, or media placed there will be available during the
+preview.
+
 ## Customization
 The project is designed to be highly customizable. You can:
 - Add custom scene effects and transitions
