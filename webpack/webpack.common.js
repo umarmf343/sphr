@@ -31,15 +31,12 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '../src/index.html'),
             filename: 'index.html',
+            inject: 'body',
         }),
         new CopyWebpackPlugin({
             patterns: [
                 { from: path.resolve(__dirname, '../static') }
             ]
-        }),
-        new HtmlWebpackPlugin({
-          template: path.resolve(__dirname, '../src/index.html'),
-          inject: 'body',
         }),
         new MiniCSSExtractPlugin({
           filename: 'styles/[name].[contenthash].css',
