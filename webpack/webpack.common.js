@@ -2,7 +2,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const BundleTracker = require("webpack-bundle-tracker");
-const _template = require('lodash.template');
 const fs = require('fs');
 const path = require('path')
 const webpack = require('webpack');
@@ -28,10 +27,6 @@ module.exports = {
     devtool: 'source-map',
     plugins:
     [
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, '../src/index.html'),
-            filename: 'index.html',
-        }),
         new CopyWebpackPlugin({
             patterns: [
                 { from: path.resolve(__dirname, '../static') }
