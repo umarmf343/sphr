@@ -8,8 +8,9 @@ const path = require('path')
 const webpack = require('webpack');
 const dotenv = require('dotenv');
 
-// Call dotenv and it will return an Object with a parsed key 
-const env = dotenv.config().parsed;
+// Call dotenv and it will return an Object with a parsed key
+const dotenvResult = dotenv.config();
+const env = dotenvResult.parsed || {};
 
 // Reduce it to a nice object
 const envKeys = Object.keys(env).reduce((prev, next) => {
