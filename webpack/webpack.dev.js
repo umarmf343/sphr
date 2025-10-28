@@ -13,7 +13,7 @@ module.exports = merge(
         output: {
             filename: 'bundle.[contenthash].js',
             path: path.resolve(__dirname, '../static/webpack_bundles/'),
-            publicPath: "http://localhost:3000/static/webpack_bundles/",
+            publicPath: '/static/webpack_bundles/',
         },
         mode: 'development',
         devServer:
@@ -21,13 +21,18 @@ module.exports = merge(
             host: '0.0.0.0',
             allowedHosts: 'all',
             port: 3000,
-            historyApiFallback: true,
+            historyApiFallback: {
+                index: '/static/webpack_bundles/index.html',
+            },
             static: {
               directory: path.resolve(__dirname, "..", "static"),
               staticOptions: {},
               publicPath: "/static/",
               serveIndex: true,
               watch: true,
+            },
+            devMiddleware: {
+              publicPath: '/static/webpack_bundles/',
             },
         }
     }
