@@ -1,0 +1,8 @@
+{
+  "status": "error",
+  "assets": {},
+  "chunks": {},
+  "publicPath": "http://localhost:3000/static/webpack_bundles/",
+  "error": "ModuleNotFoundError",
+  "message": "Module not found: Error: Can't resolve './spaceCustom' in 'C:\\Users\\User\\Documents\\UMAR MF\\sphr\\src\\components'"
+}
