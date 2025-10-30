@@ -93,14 +93,15 @@
 
     <script id="space_data" type="application/json">
       {
-        "id": "2",
+        "id": "sample-atrium",
         "type": "spaces",
         "title": "Sample Gallery Atrium",
         "mesh": null,
         "space_data": {
           "nodes": [
             {
-              "uuid": "LOCAL_SAMPLE_NODE",
+              "uuid": "LOCAL_ATRIUM_ENTRANCE",
+              "label": "Atrium Entrance",
               "image": "local/placeholder-panorama",
               "cubeMapFaces": [
                 "/static/textures/placeholder-face0.png",
@@ -115,9 +116,45 @@
               "rotation": { "x": 0, "y": 0, "z": 0 },
               "resolution": "1024",
               "floorPosition": { "x": 0, "y": 0, "z": 0 }
+            },
+            {
+              "uuid": "LOCAL_SCULPTURE_GALLERY",
+              "label": "Sculpture Gallery",
+              "image": "local/placeholder-panorama",
+              "cubeMapFaces": [
+                "/static/textures/placeholder-face0.png",
+                "/static/textures/placeholder-face1.png",
+                "/static/textures/placeholder-face2.png",
+                "/static/textures/placeholder-face3.png",
+                "/static/textures/placeholder-face4.png",
+                "/static/textures/placeholder-face5.png"
+              ],
+              "index": 1,
+              "position": { "x": 2.6, "y": 1.6, "z": -1.2 },
+              "rotation": { "x": 0, "y": 1.2, "z": 0 },
+              "resolution": "1024",
+              "floorPosition": { "x": 2.6, "y": 0, "z": -1.2 }
+            },
+            {
+              "uuid": "LOCAL_BALCONY_OUTLOOK",
+              "label": "Balcony Outlook",
+              "image": "local/placeholder-panorama",
+              "cubeMapFaces": [
+                "/static/textures/placeholder-face0.png",
+                "/static/textures/placeholder-face1.png",
+                "/static/textures/placeholder-face2.png",
+                "/static/textures/placeholder-face3.png",
+                "/static/textures/placeholder-face4.png",
+                "/static/textures/placeholder-face5.png"
+              ],
+              "index": 2,
+              "position": { "x": -2.4, "y": 2.1, "z": 1.4 },
+              "rotation": { "x": 0, "y": -1.5, "z": 0 },
+              "resolution": "1024",
+              "floorPosition": { "x": -2.4, "y": 0, "z": 1.4 }
             }
           ],
-          "initialNode": "LOCAL_SAMPLE_NODE",
+          "initialNode": "LOCAL_ATRIUM_ENTRANCE",
           "sceneSettings": {
             "nodes": {
               "scale": 1,
@@ -132,7 +169,7 @@
             "offsetPosition": { "x": 0, "y": 0, "z": 0 },
             "offsetRotation": { "x": 0, "y": 0, "z": 0 }
           },
-          "initialRotation": { "polar": 0, "azimuth": 0 }
+          "initialRotation": { "polar": -10, "azimuth": 35 }
         }
       }
     </script>
@@ -147,39 +184,69 @@
             "start": {
               "url": "https://static.mused.org/sounds/bassdrum_64k.mp3",
               "audio": null,
-              "options": { "loop": false, "volume": 0.1, "autoplay": false }
+              "options": { "loop": false, "volume": 0.2, "autoplay": false }
             },
             "default": {
               "url": "https://static.mused.org/sounds/default_oud_96k.mp3",
               "audio": null,
-              "options": { "loop": true, "volume": 0.1, "autoplay": false }
+              "options": { "loop": true, "volume": 0.25, "autoplay": true }
             },
             "navigate": {
               "url": "https://static.mused.org/sounds/bassdrum_64k.mp3",
               "audio": null,
-              "options": { "loop": false, "volume": 0.1, "autoplay": false }
+              "options": { "loop": false, "volume": 0.15, "autoplay": false }
             }
           },
           "spaces": [
             {
-              "id": "2",
+              "id": "sample-atrium",
               "type": "spaces",
               "title": "Sample Gallery Atrium",
               "tourpoints": [
                 {
-                  "nodeUUID": "LOCAL_SAMPLE_NODE",
-                  "text": "Welcome to the sample atrium experience.",
-                  "secondaryText": "Use the controls below to explore the placeholder environment.",
+                  "nodeUUID": "LOCAL_ATRIUM_ENTRANCE",
+                  "text": "Welcome to the SPHR sample gallery.\nOur atrium combines architectural sketches and placeholder imagery so you can preview navigation and interface behavior.",
+                  "secondaryText": "Use the Next button or click a floor marker to jump to other nodes.",
                   "pan": "left",
-                  "zoom": 0,
+                  "zoom": 10,
                   "files": [],
                   "models": [],
                   "sounds": ["default"],
-                  "rotation": { "polar": 0, "azimuth": 0 },
+                  "rotation": { "polar": -5, "azimuth": 45 },
                   "viewMode": "FPV",
                   "targetType": "NODE",
                   "annotations": [],
                   "textPosition": "left"
+                },
+                {
+                  "nodeUUID": "LOCAL_SCULPTURE_GALLERY",
+                  "text": "The sculpture gallery stop showcases orbit transitions and UI toggles.\nActivate Orbit view to examine the dollhouse layout and explore freely.",
+                  "secondaryText": "Tip: try switching to Explore mode to hide narration and move independently.",
+                  "pan": "right",
+                  "zoom": 35,
+                  "files": [],
+                  "models": [],
+                  "sounds": ["default"],
+                  "rotation": { "polar": -15, "azimuth": -30 },
+                  "viewMode": "ORBIT",
+                  "targetType": "NODE",
+                  "annotations": [],
+                  "textPosition": "right"
+                },
+                {
+                  "nodeUUID": "LOCAL_BALCONY_OUTLOOK",
+                  "text": "Finish your demo tour on the balcony outlook.\nFrom here you can restart the guided path or remain in free explore mode.",
+                  "secondaryText": "When autoplay is enabled, narration will advance every few seconds.",
+                  "pan": "left",
+                  "zoom": 20,
+                  "files": [],
+                  "models": [],
+                  "sounds": ["default"],
+                  "rotation": { "polar": -20, "azimuth": 140 },
+                  "viewMode": "FPV",
+                  "targetType": "NODE",
+                  "annotations": [],
+                  "textPosition": "center"
                 }
               ]
             }
