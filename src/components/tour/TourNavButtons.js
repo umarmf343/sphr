@@ -50,29 +50,164 @@ const getModelWorldPosition = (modelTarget) => {
 
 export default class TourNavButtons {
   constructor(app) {
+    this.app = app;
+    this.exploreMode = false;
 
-    const { 
-      tourSpaceActiveIdx, 
-      tourPointActiveIdx, 
-      space,
+    const {
+      tourSpaceActiveIdx,
+      tourPointActiveIdx,
       tour,
     } = Store.getState();
 
     const initialTourPoint = tour.tour_data.spaces[tourSpaceActiveIdx].tourpoints[tourPointActiveIdx];
     this.updateTourPointContent(initialTourPoint);
-    this.preloadNextTourPointContent(app);
+    this.preloadNextTourPointContent();
 
-    // Attach event listeners
     document.getElementById("prev-button").addEventListener("click", this.handleClickPrev);
     document.getElementById("next-button").addEventListener("click", this.handleClickNext);
-    
+
     if (initialTourPoint.extra === "map") {
-      app.envCube.remove();
-      app.dollhouse.hide();
-      app.earthTiles = new EarthTiles();
+      this.app.envCube.remove();
+      this.app.dollhouse.hide();
+      this.app.earthTiles = new EarthTiles();
     }
 
     this.tourSceneCustom = new TourSceneCustom();
+    this.setupUiControls();
+  }
+
+  setupUiControls() {
+    this.autoplayCheckbox = document.getElementById("autoplay");
+    this.wordsCheckbox = document.getElementById("words");
+    this.guideToggleButton = document.getElementById("guide-toggle-button");
+    this.exploreToggleButton = document.getElementById("free-explore-toggle-button");
+
+    if (this.autoplayCheckbox) {
+      this.autoplayCheckbox.addEventListener("change", (event) => {
+        if (event.target.checked) {
+          this.app.startAutoplay();
+        } else {
+          this.app.stopAutoplay();
+        }
+      });
+    }
+
+    if (this.wordsCheckbox) {
+      this.wordsCheckbox.addEventListener("change", (event) => {
+        const shouldShow = event.target.checked;
+        this.setTextVisible(!this.exploreMode && shouldShow);
+      });
+    }
+
+    if (this.guideToggleButton) {
+      this.guideToggleButton.addEventListener("click", () => {
+        this.setExploreMode(false);
+      });
+    }
+
+    if (this.exploreToggleButton) {
+      this.exploreToggleButton.addEventListener("click", () => {
+        this.setExploreMode(true);
+      });
+    }
+
+    this.setupAudioControls();
+    this.setExploreMode(false);
+    this.setTextVisible(this.wordsCheckbox ? this.wordsCheckbox.checked : true);
+  }
+
+  setupAudioControls() {
+    this.audioButtons = {
+      on: document.getElementById("audio-on-button"),
+      mute: document.getElementById("audio-mute-button"),
+      loadingOn: document.getElementById("loading-audio-on-button"),
+      loadingMute: document.getElementById("loading-audio-mute-button"),
+    };
+
+    const toggleAudio = (shouldMute) => {
+      if (this.app.audioManager) {
+        this.app.audioManager.muteAll(shouldMute);
+      }
+      this.updateAudioButtons(shouldMute);
+    };
+
+    const attach = (button, shouldMute) => {
+      if (!button) return;
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        toggleAudio(shouldMute);
+      });
+    };
+
+    attach(this.audioButtons.on, false);
+    attach(this.audioButtons.loadingOn, false);
+    attach(this.audioButtons.mute, true);
+    attach(this.audioButtons.loadingMute, true);
+
+    const initialMutedState = this.app.audioManager ? this.app.audioManager.isMuted : true;
+    this.updateAudioButtons(initialMutedState);
+  }
+
+  updateAudioButtons(isMuted) {
+    const { on, mute, loadingOn, loadingMute } = this.audioButtons || {};
+
+    if (on) {
+      on.classList.toggle("hidden", !isMuted);
+    }
+
+    if (mute) {
+      mute.classList.toggle("hidden", isMuted);
+    }
+
+    if (loadingOn) {
+      loadingOn.classList.toggle("hidden", !isMuted);
+    }
+
+    if (loadingMute) {
+      loadingMute.classList.toggle("hidden", isMuted);
+    }
+  }
+
+  setTextVisible(shouldShow) {
+    const display = document.getElementById("tour-ui-display");
+    const navpoint = document.getElementById("tour-ui-navpoint");
+
+    if (!display) {
+      return;
+    }
+
+    display.style.opacity = shouldShow ? "1" : "0";
+    display.style.pointerEvents = shouldShow ? "auto" : "none";
+
+    if (navpoint) {
+      navpoint.style.opacity = shouldShow ? "1" : "0";
+    }
+  }
+
+  setExploreMode(isExploreMode) {
+    this.exploreMode = isExploreMode;
+
+    if (this.guideToggleButton) {
+      this.guideToggleButton.classList.toggle("tour-toggle-active", !isExploreMode);
+      this.guideToggleButton.setAttribute("aria-pressed", (!isExploreMode).toString());
+    }
+
+    if (this.exploreToggleButton) {
+      this.exploreToggleButton.classList.toggle("tour-toggle-active", isExploreMode);
+      this.exploreToggleButton.setAttribute("aria-pressed", isExploreMode.toString());
+    }
+
+    if (isExploreMode) {
+      this.app.stopAutoplay();
+      if (this.autoplayCheckbox) {
+        this.autoplayCheckbox.checked = false;
+      }
+    } else if (this.autoplayCheckbox && this.autoplayCheckbox.checked) {
+      this.app.startAutoplay();
+    }
+
+    const wordsEnabled = this.wordsCheckbox ? this.wordsCheckbox.checked : true;
+    this.setTextVisible(!isExploreMode && wordsEnabled);
   }
 
   _enablePrevButton = () => {
@@ -146,10 +281,9 @@ export default class TourNavButtons {
 
   async _handleNavigate (newSpaceIdx, newTourPointIdx) {
     const {
-      app,
       renderer,
       tourLightMode,
-      tourSpaceActiveIdx, 
+      tourSpaceActiveIdx,
       tourPointActiveIdx,
       isNavigating,
       currentNode,
@@ -157,6 +291,7 @@ export default class TourNavButtons {
       tour,
       spaceConfig,
     } = Store.getState();
+    const app = this.app;
 
     // dont navigate if currently navigating between points 
     if (isNavigating) return;
@@ -253,7 +388,7 @@ export default class TourNavButtons {
 
 
     // preload the next tour point (or check if loaded)
-    this.preloadNextTourPointContent(app);
+    this.preloadNextTourPointContent();
 
     /**
      *  special flashlight mobile handling
@@ -273,7 +408,7 @@ export default class TourNavButtons {
       app.photograph.slideOut();
     }
 
-    // fly in photograph/media if needed 
+    // fly in photograph/media if needed
     if (newTourPoint.files.length) {
       app.photograph = new Photograph(newTourPoint.files[0]);
     }
@@ -309,8 +444,10 @@ export default class TourNavButtons {
     /**
      *  navigating sound fx
      */
-    app.audioManager.playSound("navigate");
-    app.audioManager.updateSoundsForTourPoint(newTourPoint.sounds, outgoingTourPoint.sounds);
+    if (app.audioManager) {
+      app.audioManager.playSound("navigate");
+      app.audioManager.updateSoundsForTourPoint(newTourPoint.sounds, outgoingTourPoint.sounds);
+    }
 
     /**
      *  zoom level 
@@ -437,7 +574,7 @@ export default class TourNavButtons {
     }
   }
 
-  preloadNextTourPointContent(app) {
+  preloadNextTourPointContent() {
     const { 
       tourSpaceActiveIdx, 
       tourPointActiveIdx, 
@@ -462,14 +599,16 @@ export default class TourNavButtons {
 
     // load upcoming sounds
     for (let sound of tourPointToPreload.sounds) {
-      app.audioManager.loadSound(sound);
+      if (this.app.audioManager) {
+        this.app.audioManager.loadSound(sound);
+      }
     }
 
     // load upcoming annotations
 
     // don't preload if it's a map point
     if (!tourPointToPreload.nodeUUID.startsWith("map")) {
-      app.loadNode(nodeToPreload);
+      this.app.loadNode(nodeToPreload);
     }
   }
 
