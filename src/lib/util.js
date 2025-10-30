@@ -1,4 +1,4 @@
-import * as THREE from 'three'
+import * as THREE from 'three';
 
 import Store from '../Store';
 
@@ -239,19 +239,34 @@ const applyTextureSettings = (texture) => {
   texture.colorSpace = THREE.SRGBColorSpace;
   texture.needsUpdate = true;
   return texture;
-}
+};
 
-export const getTextureUrl = (uuid, faceI, resolution="1024", version=null) => {
-  let _res = resolution;
+export const getTextureUrl = (uuid, faceI, resolution = "1024", version = null) => {
+  const { space } = Store.getState();
+  const faceIndex = typeof faceI === 'number' ? faceI : 0;
+  const clampedFace = Math.max(0, Math.min(5, faceIndex));
 
-  if (_res !== "full") {
-    _res += ","
+  const template = space?.space_data?.textureTemplateUrl;
+  const resolutionPart = resolution === "full" ? "full" : `${resolution},`;
+  const versionPart = version ? `_${version}` : '';
+
+  if (typeof template === 'string' && template.length) {
+    let url = template.replace('{uuid}', uuid);
+    url = url.replace('{face}', String(clampedFace));
+    url = url.replace('{resolution}', resolutionPart);
+    url = url.replace('{version}', versionPart);
+    return url;
   }
 
-  let versionPart = '';
-
-  if (version) {
-    versionPart = `_${version}`;
+  const node = space?.space_data?.nodes?.find((n) => n.uuid === uuid);
+  if (node?.image) {
+    const base = node.image.startsWith('http') ? node.image : `https://iiif.mused.org/${node.image}`;
+    if (resolution === 'full') {
+      return `${base}/full/full/0/default.jpg`;
+    }
+    return `${base}/full/${resolutionPart}/0/default.jpg`;
   }
 
-  if (resolution === "4096") {
+  console.warn(`Falling back to placeholder texture for ${uuid} face ${clampedFace}.`);
+  return `/static/textures/placeholder-face${clampedFace}.png`;
+};
