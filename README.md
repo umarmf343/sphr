@@ -28,6 +28,15 @@ https://github.com/user-attachments/assets/cf189d3d-13ee-44d9-9cd5-b51df0e24d29
 I'm just extracting the frontend from my current implmentation and making some features more modular and hackable. More to come.
 
 
+## Quick start
+
+1. Install dependencies with `npm install`.
+2. Run `npm start` and open the local development server that webpack prints to your terminal.
+3. The bundled demo loads a fully functional virtual tour interface with three navigation nodes, example narration text, background audio controls, and working guide/explore toggles. Use it as a reference implementation for wiring your own `space_data` and `tour_data` payloads.
+
+The default content uses lightweight placeholder cube maps so it works completely offline. Swap the values inside the `<script id="space_data">` and `<script id="tour_data">` tags in `src/index.html` with your own data to customize the experience.
+
+
 ## Features
 - Custom 3D space navigation and transitions
 - Support for multiple viewing modes (First Person, Orbit)
